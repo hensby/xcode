@@ -1,0 +1,9 @@
+# Project exclude paths
+/out/
+/.idea/
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+xcode.iml
