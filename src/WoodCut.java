@@ -1,21 +1,28 @@
 public class WoodCut {
     public int woodCut1(int[] L, int k) {
-        int end = 0;
-        for (int len : L) {
-            end = Math.max(len, end);
+        int min = 0, max = 0;
+        for (int len: L) {
+            max = Math.max(len, max);
         }
-
-        if (numWood(end, L) >= k) return end;
-
-        int start = 0;
-        while (start + 1 < end) {
-            int mid = start + ((end - start) >>> 1);
-            if (numWood(mid, L) >= k) {
-                start = mid;
-            } else
-                end = mid;
+        while (min+1 < max) {
+            System.out.println(max);
+            int mid = min + ((max - min) >>> 1);
+            int numberMid = countNum(L, mid );
+            if (numberMid >= k) {
+                min = mid;
+            }else {
+                max = mid;
+            }
         }
-        return start;
+        return min;
+    }
+
+    public int countNum(int[] L, int mid) {
+        int count = 0;
+        for (int len: L) {
+            count += len / mid;
+        }
+        return count;
     }
 
 
@@ -33,7 +40,7 @@ public class WoodCut {
         // trying to cut with length 1 - max
         int start = 0;
         while (start + 1 < end) {
-            int mid = start + ((end - start) >>> 1);
+            int mid = start + ((end - start) >>> 1);  //binary search
             int numMid = numWood(mid, L);
             if (numMid >= k) {
                 start = mid;
