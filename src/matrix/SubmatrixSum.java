@@ -129,10 +129,10 @@ public class SubmatrixSum {
                 {4 ,-8 ,9}
         };
         PrintMatrix printMatrix = new PrintMatrix();
-        printMatrix.pringMatrix(matrix);
+        printMatrix.printMatrix(matrix);
         int[][] res = new int[2][2];
         res = submatrixSum.submatrixSum(matrix);
-        printMatrix.pringMatrix(res);
+        printMatrix.printMatrix(res);
     }
 
 }

@@ -47,9 +47,9 @@ public class MaxSubMatrixSum {
                 {3, 8, 10, 1, 3},
                 {-4, -1, 1, 7, -6}
         };
-        printMatrix.pringMatrix(matrix);
+        printMatrix.printMatrix(matrix);
         int [][] res = maxSubmatrixSum.preComputeColumnSumMatrix(matrix);
-        printMatrix.pringMatrix(res);
+        printMatrix.printMatrix(res);
         System.out.println(maxSubmatrixSum.maxSubMatrixSum(matrix));
     }
 }

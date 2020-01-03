@@ -1,12 +1,13 @@
 package matrix;
 
+
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class KthSmallest {
 
     public int kthSmallest(int[][] matrix, int k) {
-        int m = matrix.length, n = matrix[0].length;
+        int m = matrix.length, n = matrix[0].length;//4,3
         PriorityQueue<MatrixTuple> q = new PriorityQueue<>();
         int x = 0, y = 0;
         for (; y < n; y++) {
@@ -24,7 +25,6 @@ public class KthSmallest {
         }
         return q.poll().val;
     }
-
 
     class MatrixTuple implements Comparable<MatrixTuple> {
         int x, y, val;
@@ -86,9 +86,10 @@ public class KthSmallest {
         int[][] matrix = new int[][]{
                 {1, 5, 9},
                 {10, 11, 13},
-                {12, 13, 15}
+                {12, 13, 15},
+                {16, 17, 18}
         };
         KthSmallest kthSmallest = new KthSmallest();
-        System.out.println(kthSmallest.kthSmallest(matrix, 8));
+        System.out.println(kthSmallest.kthSmallest(matrix, 12));
     }
 }
