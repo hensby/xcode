@@ -1,16 +1,13 @@
 package matrix;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class KthSmallestPairs {
 
 
-    public List<int[]> kthSmallestPairs (int[] nums1, int[] nums2, int k) {
+    public List<List<Integer>> kthSmallestPairs(int[] nums1, int[] nums2, int k) {
         int[][] dirs = {{0, 1}, {1, 0}};
-        List<int[]> result = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
         if (nums1 == null || nums2 == null || nums1.length == 0 || nums2.length == 0 || k == 0) {
             return result;
         }
@@ -21,7 +18,7 @@ public class KthSmallestPairs {
         visited[0][0] = true;
         while (k > 0 && !minHeap.isEmpty()) {
             SumPair min = minHeap.poll();
-            result.add(new int[] { nums1[min.row], nums2[min.col] });
+            result.add(new ArrayList<>(Arrays.asList(nums1[min.row], nums2[min.col])));
             k--;
             for (int[] dir : dirs) {
                 int r = min.row + dir[0];
@@ -37,10 +34,9 @@ public class KthSmallestPairs {
     }
 
 
-
     private static class SumPair implements Comparable<SumPair> {
-        private int row;
-        private int col;
+        private int row; //nums1
+        private int col; //nums2
         private long value;
 
         SumPair(int row, int col, int value) {
@@ -56,10 +52,10 @@ public class KthSmallestPairs {
 
     public static void main(String[] args) {
         PrintMatrix printMatrix = new PrintMatrix();
-        int[] nums1 = new int[]{1,1,2};
-        int[] nums2 = new int[]{1,2,3};
+        int[] nums1 = new int[]{1, 1, 2};
+        int[] nums2 = new int[]{1, 2, 3};
         KthSmallestPairs kthSmallestPairs = new KthSmallestPairs();
-        List<int[]> res = kthSmallestPairs.kthSmallestPairs(nums1, nums2, 2 );
+        List<List<Integer>> res = kthSmallestPairs.kthSmallestPairs(nums1, nums2, 2);
         printMatrix.printMatrix(res);
     }
 }

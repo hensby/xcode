@@ -12,10 +12,10 @@ public class PrintMatrix {
         }
     }
 
-    public void printMatrix(List<int[]> matrix) {
-        for (int[] re : matrix) {
-            for (int j = 0; j < re.length; j++) {
-                System.out.printf("%d ", re[j]);
+    public void printMatrix(List<List<Integer>> matrix) {
+        for (List<Integer> re : matrix) {
+            for (int j = 0; j < re.size(); j++) {
+                System.out.printf("%d ", re.get(j));
             }
             System.out.println(" ");
         }
