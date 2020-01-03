@@ -1,34 +1,43 @@
+package matrix;
+
 import java.util.HashMap;
 import java.util.Map;
 
+
+//|--------------|
+//sum[0, j]
+//|----|---------|
+//sum[0,i] sum[i,j]
+
 public class FindMaxLength {
 
-     public int findMaxLength(int [] nums) {
-         for (int i = 0; i < nums.length; i++ ) {
-             if (nums[i] == 0) {
-                 nums[i] = -1;
-             }
-         }
+    public int findMaxLength(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                nums[i] = -1;
+            }
+        }
 
-         Map<Integer, Integer> sumToIndex = new HashMap<>();
-         int sum = 0, max = 0;
+        Map<Integer, Integer> sumToIndex = new HashMap<>();//sum, index
+        int max = 0, curSum = 0;
+        for (int j = 0; j < nums.length; j++) {
+            curSum = curSum + nums[j];
+            if (curSum == 0) {
+                max = max + 1;
+                continue;
+            }
 
-         for (int i = 0; i < nums.length; i++) {
-             sum += nums[i];
-             if (sum == 0) {
-                 max = i + 1;
-                 continue;
-             }
+            Integer index = sumToIndex.get(curSum);
+            if (index != null){
+                max = Math.max(max, j - index);
+                continue;
+            }
 
-             Integer index = sumToIndex.get(sum);
-             if (index != null) {
-                 max = Math.max(max, i - index);
-                 continue;
-             }
-             sumToIndex.put(sum, i);
-         }
-         return max;
-     }
+            sumToIndex.put(curSum, j);
+        }
+        return max;
+    }
+
 
     public static void main(String[] args) {
         int[] test = new int[] {0,0,1,1,0};

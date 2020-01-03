@@ -1,3 +1,5 @@
+package matrix;
+
 public class MaxSubArray {
     public int maxSubArray(int[] A) {
         int maxEndingHere = A[0], maxSoFar = A[0];

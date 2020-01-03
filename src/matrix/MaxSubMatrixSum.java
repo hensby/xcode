@@ -1,8 +1,8 @@
-import matrix.PrintMatrix;
+package matrix;
 
 public class MaxSubMatrixSum {
     MaxSubArray maxSubArray = new MaxSubArray();
-    private int[][] preComputeColumnSumMatrix(int[][] m) {
+    public int[][] preComputeColumnSumMatrix(int[][] m) {
         int columnLength = m[0].length, rowLength = m.length;
         int [][] result = new int[rowLength][columnLength];
         for (int col = 0; col < columnLength; col++) {
@@ -14,7 +14,7 @@ public class MaxSubMatrixSum {
         return result;
     }
 
-    private int getColumnSum(int startRow, int endRow, int nthColumn, int[][] columnSumMatrix) {
+    public int getColumnSum(int startRow, int endRow, int nthColumn, int[][] columnSumMatrix) {
         if (startRow == 0) {
             return columnSumMatrix[endRow][nthColumn];
         }

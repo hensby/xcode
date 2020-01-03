@@ -1,3 +1,5 @@
+package matrix;
+
 public class NumberMatrix {
     private int[][] sums;
 
