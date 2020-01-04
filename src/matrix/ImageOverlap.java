@@ -1,13 +1,12 @@
 package matrix;
 
-import javax.sound.midi.Soundbank;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class ImageOverlap {
 
-    class Point {
+    static class Point {
         int x;
         int y;
 
@@ -35,33 +34,29 @@ public class ImageOverlap {
             return Objects.hash(this.x, this.y);
         }
 
-        @Override
-        public String toString() {
-            return "Point<" + x + "," + y + ">";
-        }
+//        @Override
+//        public String toString() {
+//            return "Point<" + x + "," + y + ">";
+//        }
     }
 
     public int largestOverlap(int[][] A, int[][] B) {
-        int n = A.length;
-        int[][] count = new int[2 * n - 1][2 * n - 1]; //-n ... n
-        int ans = 0;
-        for (int xi = 0; xi < n; ++xi) {
-            for (int yi = 0; yi < n; ++yi) {
-                if (A[xi][yi] != 1) {
-                    continue;
-                }
-                for (int xj = 0; xj < n; ++xj) {
-                    for (int yj = 0; yj < n; ++yj) {
-                        if (B[xj][yj] != 1) {
-                            continue;
-                        }
-                        int deltaX = xi - xj + n - 1;
-                        int deltaY = yi - yj + n - 1;
+        int m = A.length, ans = 0;
+        int[][] count = new int[2 * m - 1][2 * m - 1];
+        for (int xi = 0; xi < m; xi++) {
+            for (int yi = 0; yi < m; yi++) {
+                if (A[xi][yi] == 0) continue;
+                for (int xj = 0; xj < m; xj++) {
+                    for (int yj = 0; yj < m; yj++) {
+                        if (B[xj][yj] == 0) continue;
+                        int deltaX = xi - xj + m - 1;
+                        int deltaY = yi - yj + m - 1;
                         count[deltaX][deltaY] += 1;
                         ans = Math.max(count[deltaX][deltaY], ans);
                     }
                 }
             }
+
         }
         return ans;
     }
@@ -84,7 +79,7 @@ public class ImageOverlap {
                         int deltaX = xi - xj;
                         int deltaY = yi - yj;
                         Point p = new Point(deltaX, deltaY);
-                        int diff = count.getOrDefault(p, 0) + 1;
+                        int diff = count.getOrDefault(p, 0) + 1; //if doesn't have p, return defaultValue.
                         count.put(p, diff);
                         ans = Math.max(diff, ans);
                     }
@@ -96,21 +91,19 @@ public class ImageOverlap {
     }
 
 
-
-
     public static void main(String[] args) {
         int[][] A = new int[][]{
-                {1,1,0},
-                {0,1,0},
-                {0,1,0}
+                {1, 1, 0},
+                {0, 1, 0},
+                {0, 1, 0}
         };
         int[][] B = new int[][]{
-                {0,0,0},
-                {0,1,1},
-                {0,0,1}
+                {0, 0, 0},
+                {0, 1, 1},
+                {0, 0, 1}
         };
         ImageOverlap imageOverlap = new ImageOverlap();
-        System.out.println(imageOverlap.largestOverlap(A, B));
+        System.out.println(imageOverlap.largestOverlap2(A, B));
     }
 }
 /*
