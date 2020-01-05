@@ -1,17 +1,51 @@
 package matrix;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 //|--------------|
 //sum[0, j]
 //|----|---------|
 //sum[0,i] sum[i,j]
+//0 --> -1
+//int ans
+//hashMap save sum(0, i)
+//sum(0, i) == 0 --> ans = max(i - 0, ans)
+//sum(0, j) == sum(0, i) --> sum(i, j) == 0 --> ans = max(j - i, ans)
 
 public class FindMaxLength {
 
     public int findMaxLength(int[] nums) {
+        int ans = 0;
+        for (int i = 0; i < nums.length - 1; i++){
+            if (nums[i] == 0) nums[i] = -1;
+        }
+
+        Map<Integer, Integer> count = new HashMap<>();
+        int sum = 0, max = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if (sum == 0) {
+                // nums[0 ~ i] = 0
+                max = i + 1;
+                continue;
+            }
+
+            Integer index = count.get(sum);
+            if (index != null) {
+                max = Math.max(max, i - index);
+                continue;
+            }
+            count.put(sum, i);
+        }
+
+        return max;
+    }
+
+
+
+    public int findMaxLength1(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) {
                 nums[i] = -1;

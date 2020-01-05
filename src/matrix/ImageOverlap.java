@@ -131,3 +131,15 @@ public class ImageOverlap {
  1 <= A.length = A[0].length = B.length = B[0].length <= 30
  0 <= A[i][j], B[i][j] <= 1
  */
+//m = A.length
+//count int[2 * m - 1][2 * m - 1]
+//count[-2][0]
+
+//y (vertical axis)
+//            1,0,0
+//            0,1,0
+//            0,0,1
+//        1,0,0
+//        0,1,0
+//        0,0,1
+//--------------->x  Horizontal axis

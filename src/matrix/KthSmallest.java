@@ -113,3 +113,6 @@ public class KthSmallest {
  Reference: Find K Pairs with Smallest Sums
  Note that visited is needed because you may add duplicates into the queue.
  */
+//matrix[0] --> queue: {1, 5, 9} k = 8--> pop(1) matrix[0][0] offer(10) matrix[0][0 + 1] k--
+//queue: {5, 9, 10} k = 7 --> pop(5) matrix[1][0] offer(11) matrix[1][0 + 1] k--
+//queue: {9, 10, 11} k = 6
