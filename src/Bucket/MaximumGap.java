@@ -1,8 +1,35 @@
-package StringBuffet;
+package Bucket;
 
 import java.util.Arrays;
 
 public class MaximumGap {
+//    public int maximumGap1(int[] nums) {
+//        if (nums == null || nums.length < 2) return 0;
+//
+//        int min = nums[0], max = nums[0];
+//        for (int val : nums) {
+//            max = Math.max(max, val);
+//            min = Math.min(min, val);
+//        }
+//        int n = nums.length;
+//        int gap = (int)Math.ceil((double)(max - min) / (n - 1));
+//        int[] maxs = new int[n - 1];
+//        int[] mins = new int[n - 1];
+//        Arrays.fill(maxs, Integer.MAX_VALUE);
+//        Arrays.fill(mins, Integer.MIN_VALUE);
+//
+//        for (int val : nums) {
+//            if (val == max || val == min) continue;
+//            int index = (val - min) / gap;
+//
+//
+//        }
+//
+//
+//    }
+
+
+
     public int maximumGap(int[] num) {
         if (num == null || num.length < 2) {
             return 0;
@@ -17,6 +44,8 @@ public class MaximumGap {
         int n = num.length;
         // the minimum possible gap, ceiling of the integer division
         int gap = (int) Math.ceil((double) (max - min) / (n - 1));
+        System.out.println((double) (max - min) / (n - 1));
+        System.out.println((max - min) / (n - 1));
         int[] mins = new int[n - 1]; // min number in each bucket
         int[] maxs = new int[n - 1]; // max number in each bucket
         Arrays.fill(mins, Integer.MAX_VALUE);

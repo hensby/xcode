@@ -1,4 +1,4 @@
-package StringBuffet;
+package Bucket;
 
 
 import java.util.*;
@@ -130,9 +130,11 @@ public class TradeStock {
     static class BruteForce implements Solution {
         Map<String, Integer> trades = new HashMap<>();
 
+
         public void tradeStock(String ticker, int volume) {
             int totalvolume = trades.getOrDefault(ticker, 0) + volume;
             trades.put(ticker, totalvolume);
+
         }
 
         public List<String> getTopN(int n) {

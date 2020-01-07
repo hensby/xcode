@@ -1,4 +1,4 @@
-package StringBuffet;
+package Bucket;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
