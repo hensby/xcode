@@ -1,6 +1,8 @@
 package SubSequence;
 
 
+import javax.swing.plaf.IconUIResource;
+
 /**
  * strA: 'SDSD' strB: 'ADS'
  * 請問幾次能複製過去
@@ -20,7 +22,7 @@ public class SubSequence {
         for (int indexT = 0, indexS = 0; indexS < s.length(); indexS++) {
             char cur = s.charAt(indexS);
             int find = indexOf(t, cur, indexT);
-
+            System.out.println(find);
             if (find == -1) {
                 return -1;
             }
@@ -34,38 +36,35 @@ public class SubSequence {
     }
 
     private static int indexOf(String t, char c, int begIndex) {
-        if (begIndex >= t.length()) {
-            begIndex = 0;
-        }
+        if (begIndex >= t.length()) begIndex = 0;
         int index = begIndex;
+        System.out.println(index);
         do {
-            if (t.charAt(index) == c) {
-                return index;
-            }
+            if (t.charAt(index) == c) return index;
             if (++index == t.length()) {
                 index = 0;
             }
-        } while (index != begIndex);
+        }while (index != begIndex);
         return -1;
     }
 
     public static void main(String[] args) {
-        System.out.println(indexOf("abcd", 'a', 0)); // 0
-        System.out.println(indexOf("abcd", 'a', 1)); // 0
-        System.out.println(indexOf("abcd", 'a', 2)); // 0
-        System.out.println(indexOf("abcd", 'a', 3)); // 0
-        System.out.println(indexOf("abcd", 'a', 4)); // 0
-        System.out.println(indexOf("abcd", 'e', 0)); // -1
+//        System.out.println(indexOf("abcd", 'a', 0)); // 0
+//        System.out.println(indexOf("abcd", 'a', 1)); // 0
+//        System.out.println(indexOf("abcd", 'a', 2)); // 0
+//        System.out.println(indexOf("abcd", 'a', 3)); // 0
+//        System.out.println(indexOf("abcd", 'a', 4)); // 0
+//        System.out.println(indexOf("abcd", 'e', 0)); // -1
 
         System.out.println(min("SDSD", "ADS")); // 3
-        System.out.println(min("SDS", "ADS")); // 2
-        System.out.println(min("SDT", "ADS")); // -1
-        System.out.println(min("", "ADS")); // 0
-        System.out.println(min("SDT", "")); // -1
-        System.out.println(min("", "")); // 0
-        System.out.println(min("aaaaaaaaaa", "xxxxxxaxxxxxxx")); // 10
-        System.out.println(min("aaaaaaaaaa", "xxxxxxaaxxxxxxx")); // 5
-        System.out.println(min("aaaaaaaaaa", "xxxxxxaxxaxxxxx")); // 5
-        System.out.println(min("aaaaaaaaaa", "axxxxxxxxxxxxxa")); // 5
+//        System.out.println(min("SDS", "ADS")); // 2
+//        System.out.println(min("SDT", "ADS")); // -1
+//        System.out.println(min("", "ADS")); // 0
+//        System.out.println(min("SDT", "")); // -1
+//        System.out.println(min("", "")); // 0
+//        System.out.println(min("aaaaaaaaaa", "xxxxxxaxxxxxxx")); // 10
+//        System.out.println(min("aaaaaaaaaa", "xxxxxxaaxxxxxxx")); // 5
+//        System.out.println(min("aaaaaaaaaa", "xxxxxxaxxaxxxxx")); // 5
+//        System.out.println(min("aaaaaaaaaa", "axxxxxxxxxxxxxa")); // 5
     }
 }
