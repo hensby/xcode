@@ -1,4 +1,4 @@
-package Bucket;
+package stringAndBucket;
 
 import java.util.HashMap;
 import java.util.Map;

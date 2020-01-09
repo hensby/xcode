@@ -1,7 +1,5 @@
-package SubSequence;
+package stringAndBucket;
 
-
-import javax.swing.plaf.IconUIResource;
 
 /**
  * strA: 'SDSD' strB: 'ADS'
@@ -22,7 +20,6 @@ public class SubSequence {
         for (int indexT = 0, indexS = 0; indexS < s.length(); indexS++) {
             char cur = s.charAt(indexS);
             int find = indexOf(t, cur, indexT);
-            System.out.println(find);
             if (find == -1) {
                 return -1;
             }
@@ -38,12 +35,11 @@ public class SubSequence {
     private static int indexOf(String t, char c, int begIndex) {
         if (begIndex >= t.length()) begIndex = 0;
         int index = begIndex;
-        System.out.println(index);
+//        System.out.println(index);
         do {
             if (t.charAt(index) == c) return index;
-            if (++index == t.length()) {
-                index = 0;
-            }
+            index++;
+            if (index == begIndex) index = 0;
         }while (index != begIndex);
         return -1;
     }

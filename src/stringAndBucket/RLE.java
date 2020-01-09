@@ -1,4 +1,4 @@
-package Bucket;
+package stringAndBucket;
 
 import java.util.ArrayList;
 import java.util.List;

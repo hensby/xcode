@@ -1,4 +1,4 @@
-package SubSequence;
+package stringAndBucket;
 
 public class IsSubsequence {
     public boolean isSubsequence(String s, String t) {
