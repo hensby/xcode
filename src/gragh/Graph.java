@@ -76,8 +76,8 @@ public class Graph {
         }
     }
 
-    public static void main(String[] args) {
-        Graph graph = new Graph();
+    public void buildGraph (Graph graph) {
+
         graph.insertVertex("A");
         graph.insertVertex("B");
         graph.insertVertex("C");
@@ -92,7 +92,28 @@ public class Graph {
         graph.insertEdge("A", "D", 5);
         graph.insertEdge("D", "F", 4);
         graph.insertEdge("D", "E", 3);
-
         graph.print();
+    }
+
+    public static void main(String[] args) {
+        Graph graph = new Graph();
+        graph.buildGraph(graph);
+//        Graph graph = new Graph();
+//        graph.insertVertex("A");
+//        graph.insertVertex("B");
+//        graph.insertVertex("C");
+//        graph.insertVertex("D");
+//        graph.insertVertex("E");
+//        graph.insertVertex("F");
+//
+//        graph.insertEdge("C", "A", 1);
+//        graph.insertEdge("F", "C", 2);
+//        graph.insertEdge("A", "B", 4);
+//        graph.insertEdge("E", "B", 2);
+//        graph.insertEdge("A", "D", 5);
+//        graph.insertEdge("D", "F", 4);
+//        graph.insertEdge("D", "E", 3);
+//
+//        graph.print();
     }
 }
