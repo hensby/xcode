@@ -59,7 +59,6 @@ public class CountComponent {
                 {1, 2},
 //                {2, 3},
                 {3, 4},
-                {2, 3}
         };
         CountComponent countComponent = new CountComponent();
         System.out.println(countComponent.countComponents(5, edges));

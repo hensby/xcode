@@ -55,11 +55,11 @@ public class NumSimilarGroups {
         return true;
     }
 
-    private void swap(char[] a, int i, int j) {
-        char tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
+//    private void swap(char[] a, int i, int j) {
+//        char tmp = a[i];
+//        a[i] = a[j];
+//        a[j] = tmp;
+//    }
 
 
 
