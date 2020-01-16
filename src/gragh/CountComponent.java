@@ -1,5 +1,7 @@
 package gragh;
 
+import java.util.Arrays;
+
 public class CountComponent {
     /**
      * Number of Connected Components in an Undirected Graph
@@ -37,12 +39,17 @@ public class CountComponent {
         for (int i = 0; i < n; i++) {
             u.id[i] = i;
         }
-
+        System.out.println(Arrays.toString(u.id) + " " + u.count);
         for (int[] e : edges) {
             if (!u.find(e[0], e[1])) {
                 u.union(e[0], e[1]);
+                System.out.println(Arrays.toString(u.id) + " " + u.count);
+            }else {
+                System.out.println("e: " + Arrays.toString(e));
             }
         }
+        System.out.println(Arrays.toString(u.id) + " " + u.count);
+
         return u.count;
     }
 
@@ -50,8 +57,9 @@ public class CountComponent {
         int[][] edges = new int[][] {
                 {0, 1},
                 {1, 2},
-                {2, 3},
-                {3, 4}
+//                {2, 3},
+                {3, 4},
+                {2, 3}
         };
         CountComponent countComponent = new CountComponent();
         System.out.println(countComponent.countComponents(5, edges));
