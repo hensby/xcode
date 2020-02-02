@@ -3,39 +3,30 @@ package DP;
 import java.util.Arrays;
 
 public class MinDistance {
-    public int minDistance1(String s, String t) {
-        int m = s.length(), n = t.length();
-        int[][] count = new int[m + 1][n + 1];
-        for (int i = 0; i < n + 1; i++) {
-            count[0][i] = i;
+    public int minDistance2(String word1, String word2) {
+        int m = word1.length(), n = word2.length();
+        if (n > m) {
+            return minDistance2(word2, word1);
         }
-        for (int j = 0; j < m + 1; j++) {
-            count[j][0] = j;
+        int[] cur = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            cur[i] = i;
         }
-
-        for (int i = 1; i < m + 1; i++) {
-            for (int j = 1; j < n + 1; j++) {
-                if (s.charAt(i) == t.charAt(j)) {
-                    count[i][j] = count[i - 1][j - 1];
+        for (int i = 1; i <= m; i++) {
+            int pre = cur[0];
+            cur[0] = i;
+            for (int j = 1; j <= n; j++) {
+                int temp = cur[j];
+                if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
+                    cur[j] = pre;
                 } else {
-                    count[i][j] = 1 + Math.min(Math.min(count[i - 1][j - 1], count[i][j - 1]),count[i - 1][j]);
+                    cur[j] = Math.min(pre, Math.min(cur[j], cur[j - 1])) + 1;
                 }
+                pre = temp;
             }
         }
-        return count[m][n];
+        return cur[n];
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     public int minDistance(String S, String T) {
         int m = S.length(), n = T.length();
@@ -82,7 +73,7 @@ public class MinDistance {
     public static void main(String[] args) {
         String s = "horse", t = "ros";
         MinDistance minDistance = new MinDistance();
-        System.out.println(minDistance.minDistance(s,t));
+        System.out.println(minDistance.minDistance2(s,t));
 
     }
 }
