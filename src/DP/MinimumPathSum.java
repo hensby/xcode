@@ -24,6 +24,24 @@ public class MinimumPathSum {
         return grid[m - 1][n - 1];
     }
 
+    public int minPathSum1(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+//        int[][] count = new int[m + 1][n + 1];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == 0 && j == 0) continue;
+                if (i == 0 && j != 0) {
+                    matrix[i][j] = matrix[i][j] + matrix[i][j - 1];
+                } else if (i != 0 && j == 0) {
+                    matrix[i][j] = matrix[i][j] + matrix[i - 1][j];
+                } else {
+                    matrix[i][j] = matrix[i][j] + Math.min(matrix[i - 1][j] , matrix[i][j - 1]);
+                }
+            }
+        }
+        return matrix[m - 1][n - 1];
+    }
+
     public static void main(String[] args) {
         MinimumPathSum minimumPathSum = new MinimumPathSum();
         int[][] a = new int[][] {
@@ -31,7 +49,7 @@ public class MinimumPathSum {
                 {1, 5, 1},
                 {4, 2, 1}
         };
-        System.out.println(minimumPathSum.minPathSum(a));
+        System.out.println(minimumPathSum.minPathSum1(a));
     }
 }
 //    LC64

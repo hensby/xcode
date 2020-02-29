@@ -1,3 +1,5 @@
+package binarySearch;
+
 public class SplitArrayLargestSum {
     public int splitArray(int[] nums, int m) {
         long sum = nums[0];

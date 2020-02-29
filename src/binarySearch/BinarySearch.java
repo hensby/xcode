@@ -1,3 +1,5 @@
+package binarySearch;
+
 public class BinarySearch {
     public int binarySearch(int[] a, int fromIndex, int toIndes, int key) {
         int low = fromIndex, high = toIndes - 1;
@@ -15,7 +17,6 @@ public class BinarySearch {
             }
         }
         return -(low + 1);
-
     }
 
     public static void main(String[] args) {

@@ -1,4 +1,5 @@
-import javax.swing.*;
+package binarySearch;
+
 import java.util.Arrays;
 
 public class FindKthSmallestPairDistance {

@@ -1,3 +1,5 @@
+package binarySearch;
+
 import binaryTree.Node;
 import binaryTree.BinaryTree;
 
@@ -32,6 +34,7 @@ public class ClosestBinarySearchTree {
         nodes.add(5);nodes.add(2);nodes.add(12);nodes.add(3);
         nodes.add(9);nodes.add(21);nodes.add(25);nodes.add(19);nodes.add(-4);
         bt = bt.createBinaryTree(nodes);
+        bt.printBt(bt.root);
         int res = closestBinarySearchTree.closestValue(bt.root, 8.0);
         System.out.println(res);
     }

@@ -1,3 +1,5 @@
+package binarySearch;
+
 public class WoodCut {
     public int woodCut1(int[] L, int k) {
         int min = 0, max = 0;
@@ -5,7 +7,7 @@ public class WoodCut {
             max = Math.max(len, max);
         }
         while (min+1 < max) {
-            System.out.println(max);
+            System.out.println(min + " " + max );
             int mid = min + ((max - min) >>> 1);
             int numberMid = countNum(L, mid );
             if (numberMid >= k) {
@@ -14,6 +16,7 @@ public class WoodCut {
                 max = mid;
             }
         }
+        System.out.println(min + " " + max );
         return min;
     }
 
@@ -25,45 +28,36 @@ public class WoodCut {
         return count;
     }
 
-
-    public int woodCut(int[] L, int k) {
-        int end = 0;
-
-        for (int len : L) {
-            end = Math.max(end, len);
+    public int woodCut(int[] woods, int k) {
+        int min = 0, max = 0;
+        for (int i : woods) {
+            max = Math.max(i,max);
         }
 
-        if (numWood(end, L) >= k) {
-            return end;
-        }
-
-        // trying to cut with length 1 - max
-        int start = 0;
-        while (start + 1 < end) {
-            int mid = start + ((end - start) >>> 1);  //binary search
-            int numMid = numWood(mid, L);
-            if (numMid >= k) {
-                start = mid;
+        while(min + 1 < max) {
+            int mid = min + ((max - min) >>>1 );
+            if (countWoods(woods, mid) >= k) {
+                min = mid;
             } else {
-                end = mid;
+                max = mid;
             }
         }
-
-        return start;
+        return min;
     }
 
-    private int numWood(int length, int[] L) {
+    public int countWoods(int[] woods, int woodLen) {
         int count = 0;
-        for (int len : L) {
-            count += len / length;
+        for (int i : woods) {
+            count += i / woodLen;
         }
         return count;
     }
 
+
     public static void main(String[] args) {
         WoodCut woodCut = new WoodCut();
         int[] s = new int[]{232, 124, 456};
-        System.out.println(woodCut.woodCut1(s, 7));
+        System.out.println(woodCut.woodCut(s, 7));
     }
 
 

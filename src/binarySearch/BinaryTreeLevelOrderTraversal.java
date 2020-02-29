@@ -1,3 +1,5 @@
+package binarySearch;
+
 import binaryTree.Node;
 import binaryTree.BinaryTree;
 
