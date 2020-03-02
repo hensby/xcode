@@ -31,6 +31,26 @@ public class CanVisitAllRooms {
         return n == 0;
     }
 
+    public boolean canVisit(List<List<Integer>> route) {
+        int m = route.size();
+        boolean [] visited = new boolean[m];
+        visited[0] = true;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
+        while (!stack.isEmpty()) {
+            int node = stack.pop();
+            m--;
+
+            for (int neighber : route.get(node)) {
+                if (!visited[neighber]) {
+                    visited[neighber] = true;
+                    stack.push(neighber);
+                }
+            }
+        }
+        return m == 0;
+    }
+
     public static void main(String[] args) {
         List<List<Integer>> rooms = new ArrayList<>();
         List<Integer> list1 = new ArrayList<>(Arrays.asList(1, 3));
@@ -53,7 +73,7 @@ public class CanVisitAllRooms {
         System.out.println(rooms1);
         CanVisitAllRooms canVisitAllRooms = new CanVisitAllRooms();
         System.out.println(canVisitAllRooms.canVisitAllRooms(rooms));
-        System.out.println(canVisitAllRooms.canVisitAllRooms(rooms1));
+        System.out.println(canVisitAllRooms.canVisit(rooms1));
 
     }
 }

@@ -54,9 +54,7 @@ public class MinDistance {
                     // A: S(i-1) => T(j-1) and c1 => c2
                     // B: S(i) => T(j-1) and add c2
                     // C: S(i) delete c and then S(i-1) => T(j)
-                    a[i][j] = 1 + Math
-                            .min(Math.min(a[i - 1][j - 1], a[i][j - 1]),
-                                    a[i - 1][j]);
+                    a[i][j] = 1 + Math.min(Math.min(a[i - 1][j - 1], a[i][j - 1]), a[i - 1][j]);
                 }
                 for (int[] h: a) {
                     System.out.println(Arrays.toString(h));
@@ -73,7 +71,28 @@ public class MinDistance {
     public static void main(String[] args) {
         String s = "horse", t = "ros";
         MinDistance minDistance = new MinDistance();
-        System.out.println(minDistance.minDistance2(s,t));
-
+        System.out.println(minDistance.minDistance(s,t));
     }
 }
+//    Given two words word1 and word2, find the minimum number of operations required to convert word1 to word2.
+//
+//        You have the following 3 operations permitted on a word:
+//
+//        Insert a character
+//        Delete a character
+//        Replace a character
+//        Example 1:
+//
+//        Input: word1 = "horse", word2 = "ros"
+//        Output: 3
+//        Explanation:
+//        horse -> rorse (replace 'h' with 'r')
+//        rorse -> rose (remove 'r')
+//        rose -> ros (remove 'e')
+//
+//        当 word1[i] == word2[j]，dp[i][j] = dp[i-1][j-1]；
+//
+//        当 word1[i] != word2[j]，dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + 1
+//
+//        其中，dp[i-1][j-1] 表示替换操作，dp[i-1][j] 表示删除操作，dp[i][j-1] 表示插入操作。
+
