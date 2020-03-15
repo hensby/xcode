@@ -1,107 +1,77 @@
-import java.util.Hashtable;
+import java.util.HashMap;
 public class LRUCache {
-
-    class DLinkedNode {
+    class DLinkNode{
         int key;
-        int value;
-        DLinkedNode prev;
-        DLinkedNode next;
+        int val;
+        DLinkNode prev;
+        DLinkNode next;
     }
 
-    private void addNode(DLinkedNode node) {
-        /**
-         * Always add the new node right after head.
-         */
+    public void addNode (DLinkNode node) {
         node.prev = head;
         node.next = head.next;
-
         head.next.prev = node;
         head.next = node;
     }
 
-    private void removeNode(DLinkedNode node){
-        /**
-         * Remove an existing node from the linked list.
-         */
-        DLinkedNode prev = node.prev;
-        DLinkedNode next = node.next;
-
-        prev.next = next;
-        next.prev = prev;
+    public void remove (DLinkNode node) {
+        DLinkNode nodePrev = node.prev;
+        DLinkNode nodeNext = node.next;
+        nodePrev.next = nodeNext;
+        nodeNext.prev = nodePrev;
     }
 
-    private void moveToHead(DLinkedNode node){
-        /**
-         * Move certain node in between to the head.
-         */
-        removeNode(node);
+    public void moveToHead (DLinkNode node) {
+        remove(node);
         addNode(node);
     }
 
-    private DLinkedNode popTail() {
-        /**
-         * Pop the current tail.
-         */
-        DLinkedNode res = tail.prev;
-        removeNode(res);
-        return res;
+    public DLinkNode removeTail () {
+        DLinkNode node = tail.prev;
+        remove(node);
+        return node;
     }
 
-    private Hashtable<Integer, DLinkedNode> cache =
-            new Hashtable<Integer, DLinkedNode>();
-    private int size;
-    private int capacity;
-    private DLinkedNode head, tail;
+    int size = 0, capacity = 0;
+    private DLinkNode head, tail;
+    HashMap<Integer, DLinkNode> cache = new HashMap<Integer, DLinkNode>();
 
     public LRUCache(int capacity) {
-        this.size = 0;
         this.capacity = capacity;
-
-        head = new DLinkedNode();
-        // head.prev = null;
-
-        tail = new DLinkedNode();
-        // tail.next = null;
-
+        this.size = 0;
+        head = new DLinkNode();
+        tail = new DLinkNode();
         head.next = tail;
         tail.prev = head;
     }
 
     public int get(int key) {
-        DLinkedNode node = cache.get(key);
+        DLinkNode node = cache.get(key);
         if (node == null) return -1;
-
-        // move the accessed node to the head;
         moveToHead(node);
-
-        return node.value;
+        return node.val;
     }
 
     public void put(int key, int value) {
-        DLinkedNode node = cache.get(key);
-
-        if(node == null) {
-            DLinkedNode newNode = new DLinkedNode();
+        DLinkNode node = cache.get(key);
+        if (node == null) {
+            DLinkNode newNode = new DLinkNode();
+            newNode.val = value;
             newNode.key = key;
-            newNode.value = value;
-
-            cache.put(key, newNode);
             addNode(newNode);
-
-            ++size;
-
-            if(size > capacity) {
-                // pop the tail
-                DLinkedNode tail = popTail();
-                cache.remove(tail.key);
-                --size;
+            cache.put(key, newNode);
+            size++;
+            if (size > capacity) {
+                DLinkNode tailNode = removeTail();
+                cache.remove(tailNode.key);
+                size--;
             }
         } else {
-            // update the value.
-            node.value = value;
+            node.val = value;
             moveToHead(node);
         }
     }
+
 
     public static void main(String[] args) {
         LRUCache cache = new LRUCache( 2 /* capacity */ );
