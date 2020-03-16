@@ -26,3 +26,4 @@ public class TopKFrequentWords {
         System.out.println(topKFrequentWords.topKFrequent(words,3));
     }
 }
+// 692
