@@ -1,30 +1,31 @@
 package gragh;
 
 import java.util.*;
+//127
 
 public class WordLadder {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Set<String> set=new HashSet<>(wordList);
-        if(!set.contains(endWord)) return 0;
-        Queue<String> q=new LinkedList<>();
-        q.offer(beginWord);
-        set.remove(beginWord);
-        int res=0;
-        while(!q.isEmpty()){
-            int len=q.size();
+        Set<String> wordSet = new HashSet<>(wordList);
+        if (!wordSet.contains(endWord) || wordSet.contains(beginWord)) return 0;
+        Queue<String> wordQueue = new LinkedList<>();
+        wordQueue.offer(beginWord);
+        int res = 0;
+
+        while (!wordQueue.isEmpty()) {
+            int len=wordQueue.size();
             res++;
             while(len-->0){
-                String s=q.poll();
-                List<String> list=getneighbor(s, set);
+                String s=wordQueue.poll();
+                List<String> list=getNeighbor(s, wordSet);
                 for(String string:list){
                     if(string.equals(endWord)) return 1+res;
-                    q.offer(string);
+                    wordQueue.offer(string);
                 }
             }
         }
         return 0;
     }
-    public List<String> getneighbor(String s, Set<String> set){
+    public List<String> getNeighbor(String s, Set<String> set){
         List<String> list=new ArrayList<>();
         char[] ch=s.toCharArray();
         for(int i=0;i<ch.length;i++){
