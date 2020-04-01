@@ -121,14 +121,14 @@ public class CurrencyExchange {
 
     public static void main(String[] args) {
         CurrencyExchange solution = new CurrencyExchange();
-        List<Ratio> ratios = new ArrayList<>() {{
+        List<Ratio> ratios = new ArrayList() {{
             add(new Ratio("USD", "GBP", 0.69));
             add(new Ratio("YEN", "EUR", 0.0077));
             add(new Ratio("GBP", "YEN", 167.75));
             add(new Ratio("USD", "RP", 212.02));
             add(new Ratio("Yard", "Meter", 1.09));
         }};
-        List<Pair> queries = new ArrayList<>() {{
+        List<Pair> queries = new ArrayList() {{
             add(new Pair("USD", "EUR"));
 			add(new Pair("YEN", "YEN"));
 			add(new Pair("Meter", "Yard"));
