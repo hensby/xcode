@@ -13,9 +13,9 @@ public class MostCommonWord {
 
         String ans = "";
         int ansfreq = 0;
-
         StringBuilder word = new StringBuilder();
         for (char c: paragraph.toCharArray()) {
+//            System.out.println(c);
             if (Character.isLetter(c)) {
                 word.append(Character.toLowerCase(c));
             } else if (word.length() > 0) {
