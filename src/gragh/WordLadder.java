@@ -42,6 +42,7 @@ public class WordLadder {
             }
             ch[i]=tmp;
         }
+        System.out.println(list);
         return list;
     }
 
