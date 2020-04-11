@@ -27,7 +27,6 @@ public class PartitionLabels {
         return res;
     }
 
-
     public List<Integer> partitionLabels1(String S) {
         if (null == S || 0 == S.length()) {
             return null;
