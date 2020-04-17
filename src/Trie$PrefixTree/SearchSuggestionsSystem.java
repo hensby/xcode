@@ -1,4 +1,4 @@
-package trieTree;
+package Trie$PrefixTree;
 
 import java.util.ArrayList;
 import java.util.List;
