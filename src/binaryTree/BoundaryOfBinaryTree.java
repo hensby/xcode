@@ -35,6 +35,28 @@ public class BoundaryOfBinaryTree {
         leaves(root.left, res);
         leaves(root.right, res);
     }
+
+    public static void main(String[] args) {
+        BinaryTree bt = new BinaryTree();
+        ArrayList nodes = new ArrayList();
+        nodes.add(1);
+        nodes.add(2);
+        nodes.add(3);
+        nodes.add(4);
+        nodes.add(5);
+        nodes.add(6);
+        nodes.add(7);
+        nodes.add(8);
+        nodes.add(9);
+        nodes.add(10);
+
+        System.out.println(nodes);
+
+        bt = bt.createBinaryTree(nodes);
+        bt.printBt(bt.root);
+        BoundaryOfBinaryTree boundaryOfBinaryTree = new BoundaryOfBinaryTree();
+        System.out.println(boundaryOfBinaryTree.boundaryOfBinaryTree(bt.root));
+    }
 }
 //        Leetcode 545. Boundary of Binary Tree
 //
