@@ -16,6 +16,7 @@ public class NumbersOfDistinctIsland {
                 }
             }
         }
+        System.out.println(set);
         return set.size();
     }
 
@@ -23,7 +24,7 @@ public class NumbersOfDistinctIsland {
         if(x < 0 || y < 0 || x >= grid.length || y >= grid[0].length) return;
         if(visited[x][y] || grid[x][y] != 1) return;
         visited[x][y] = true;
-
+        System.out.println("ox "+ ox + " oy " + oy + " x " + x + " y " + y);
         sb.append(x - ox).append(".").append(y-oy).append(".");
 
         int[][] dirs = {{-1,0}, {1,0}, {0,1}, {0, -1}};
