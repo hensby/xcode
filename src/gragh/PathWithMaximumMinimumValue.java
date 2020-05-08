@@ -1,36 +1,37 @@
 package gragh;
 
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class PathWithMaximumMinimumValue {
-    int[][] dirs = new int[][]{{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
-    public int maximumMinimumPath(int[][] A) {
-        int m = A.length, n = A[0].length;
-        boolean[][] visited = new boolean[m][n];
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (b[0] - a[0]));
-        pq.offer(new int[]{A[0][0], 0, 0});
-        int res = A[0][0];
-        visited[0][0] = true;
 
-        while(!pq.isEmpty()) {
-            int[] top = pq.poll();
-            // System.out.println(top[0] + " " + top[1] + " " + top[2]);
-            res = Math.min(res, top[0]);
-            if(top[1] == m - 1 && top[2] == n - 1) {
-                break;
-            }
+    int[][] dirs = new int[][]{{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
+
+    public int maximumMinimumPath1(int[][] A) {
+        int m = A.length, n = A[0].length;
+        PriorityQueue<int[]> queue = new PriorityQueue<>((a,b)-> b[0] - a[0]);
+        boolean[][] visited = new boolean[m][n];
+        int res = A[0][0];
+        queue.add(new int[]{A[0][0], 0, 0});
+        visited[0][0] = true;
+        while(!queue.isEmpty()) {
+            int[] tmp = queue.poll();
+            res = Math.min(res, tmp[0]);
+            if (tmp[1] == m - 1 && tmp[2] == n - 1) return res;
             for(int[] dir : dirs) {
-                int x = dir[0] + top[1];
-                int y = dir[1] + top[2];
+                int x = dir[0] + tmp[1];
+                int y = dir[1] + tmp[2];
                 // System.out.println("can" + " " + x + " " + y);
                 if(x < 0 || x >= m || y < 0 || y >= n || visited[x][y]) continue;
                 // System.out.println("add" + A[x][y] + " " + x + " " + y);
-                pq.offer(new int[]{A[x][y], x, y});
+                queue.add(new int[]{A[x][y], x, y});
                 visited[x][y] = true;
             }
         }
         return res;
     }
+
 
     public static void main(String[] args) {
         int[][] input = new int[][]{
@@ -39,7 +40,7 @@ public class PathWithMaximumMinimumValue {
                 {7,4,6}
         };
         PathWithMaximumMinimumValue p = new PathWithMaximumMinimumValue();
-        System.out.println(p.maximumMinimumPath(input));
+        System.out.println(p.maximumMinimumPath1(input));
     }
 }
 //LeetCode 1102. Path With Maximum Minimum Value
