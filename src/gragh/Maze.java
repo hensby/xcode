@@ -1,54 +1,40 @@
 package gragh;
 
 public class Maze {
-    int [][] dirs = new int[][]{{-1, 0}, {1,0}, {0,-1}, {0,1}};
-    public boolean hasPath(int[][] maze, int[] start, int[] destination) {
-        if(maze == null || maze.length == 0 || maze[0].length == 0){
-            return false;
-        }
 
-        int m = maze.length;
-        int n = maze[0].length;
+    int[][] dict = new int[][] {{0,1}, {0, -1}, {-1, 0}, {1, 0}};
+    public boolean hasPath(int[][] maze, int[] start, int[] destination) {
+        int m = maze.length, n = maze[0].length;
+        if (m == 0 && n == 0 && maze == null) return false;
         boolean [][] visited = new boolean[m][n];
         visited[start[0]][start[1]] = true;
-
-        for(int [] dir : dirs){
-            if(dfs(maze, start, destination, dir, visited)){
-                return true;
-            }
+        for(int[] tmp: dict) {
+            if (dfs(maze, start, destination, tmp, visited)) return true;
         }
         return false;
     }
 
-    private boolean dfs(int[][] maze, int[] start, int[] dest, int [] dir, boolean [][] visited){
-        int m = maze.length;
-        int n = maze[0].length;
-
-        int r = start[0];
-        int c = start[1];
-
-        if(r == dest[0] && c ==dest[1]){
-            return true;
+    public boolean dfs(int[][] maze, int[] start, int[] destination, int[] tmp, boolean[][] visited){
+        if (destination[0] == start[0] && destination[1] == start[1]) return true;
+        int m = maze.length, n = maze[0].length;
+        int x = start[0];
+        int y = start[1];
+        while( x + tmp[0] > 0 && x + tmp[0] < m && y + tmp[1] > 0 && y + tmp[1] < n && maze[x + tmp[0]][y + tmp[1]] == 0 ) {
+            x += tmp[0];
+            y += tmp[1];
         }
-
-        while(r+dir[0]>=0 && r+dir[0]<m && c+dir[1]>=0 && c+dir[1]<n && maze[r+dir[0]][c+dir[1]]==0){
-            r += dir[0];
-            c += dir[1];
-        }
-
-        if(visited[r][c]){
+        if(visited[x][y]){
             return false;
         }
-
-        visited[r][c] = true;
-        for(int [] nextDir : dirs){
-            if(dfs(maze, new int[]{r,c}, dest, nextDir, visited)){
+        visited[x][y] = true;
+        for(int[] nextDir : dict){
+            if(dfs(maze, new int[]{x, y}, destination, nextDir, visited)){
                 return true;
             }
         }
-
         return false;
     }
+
 
     public static void main(String[] args) {
         int[][] maze = new int[][]{
