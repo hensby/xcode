@@ -48,8 +48,8 @@ public class Maze {
         System.out.println(m.hasPath(maze, new int[]{0, 4},new int[]{4, 4}));
     }
 }
-//LeetCode 490. The Maze
-//  https://www.cnblogs.com/Dylan-Java-NYC/p/11926514.html
+//   LeetCode 490. The Maze
+//   https://www.cnblogs.com/Dylan-Java-NYC/p/11926514.html
 //        There is a ball in a maze with empty spaces and walls. The ball can go through empty spaces by rolling up, down, left or right, but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction.
 //
 //        Given the ball's start position, the destination and the maze, determine whether the ball could stop at the destination.
