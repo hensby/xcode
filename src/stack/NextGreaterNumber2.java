@@ -3,7 +3,7 @@ package stack;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class NextGreaterNumber {
+public class NextGreaterNumber2 {
     public int[] nextGreaterElements(int[] nums) {
         Stack<Integer> stack = new Stack<>();
         int[] res = new int[nums.length];
@@ -21,7 +21,7 @@ public class NextGreaterNumber {
     }
 
     public static void main(String[] args) {
-        NextGreaterNumber nextGreaterNumber = new NextGreaterNumber();
+        NextGreaterNumber2 nextGreaterNumber = new NextGreaterNumber2();
         int[] input = new int[]{3,8,4,1,2};
         System.out.println(Arrays.toString(nextGreaterNumber.nextGreaterElements(input)));
     }
