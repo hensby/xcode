@@ -13,7 +13,6 @@ public class LongestTurbulentSubarray {
                 anchor = i;
             }
         }
-
         return ans;
     }
 
