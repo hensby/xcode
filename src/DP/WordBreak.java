@@ -50,13 +50,39 @@ public class WordBreak {
         return false;
     }
 
+    //bfs
+    public boolean wordBreak2(String s, List<String> wordDict) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(0);
+        boolean[] visited = new boolean[s.length()];
+        while(!queue.isEmpty()) {
+            System.out.println(queue);
+            int start = queue.poll();
+            if(!visited[start]){
+                for(String word: wordDict) {
+                    int end = start + word.length();
+                    System.out.println(word + " " + end);
+                    if(end <= s.length() && s.substring(start, end).equals(word)) {
+                        if(end == s.length()) return true;
+                        queue.add(end);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
     public static void main(String[] args) {
         WordBreak wordBreak = new WordBreak();
         String s = "leetcode";
         List<String> wordDict = new ArrayList<>() ;
         wordDict.add("leet");
         wordDict.add("code");
-        System.out.println(wordBreak.wordBreak1(s,wordDict));
+        System.out.println(wordBreak.wordBreak2(s,wordDict));
+
     }
 
 }
