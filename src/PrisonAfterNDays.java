@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class PrisonAfterNDays {
 
@@ -70,10 +68,47 @@ public class PrisonAfterNDays {
         return ans;
     }
 
+    int len;
+    public int[] prisonAfterNDays3(int[] cells, int N) {
+        List<int[]> cycleCells = new ArrayList<int[]>();
+        int cycle = 0;
+        this.len = cells.length;
+        int[] firstCells = new int[len];
+        for(int i = 0; i < N; i++) {
+            int[] cur = processArray(cells);
+            if(i == 0) {
+                firstCells = cur;
+                cycleCells.add(cur);
+                continue;
+            }
+            if(!Arrays.equals(cur, firstCells)) {
+                cycleCells.add(cur);
+            } else {
+                cycle = i;
+                int index = N % cycle == 0? cycle: N % cycle;
+                int[] res = cycleCells.get(index - 1);
+                return res;
+            }
+        }
+        return cells;
+    }
+
+    public int[] processArray(int[] cur) {
+        int[] res = new int[len];
+        for(int i = 0; i < len; i++) {
+            if(i == 0 || i == len - 1) res[i] = 0;
+            else {
+                if(cur[i - 1] == cur[i + 1]) res[i] = 1;
+                else res[i] = 0;
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         int[] s = new int[] {0,1,0,1,1,0,0,1};
         PrisonAfterNDays prisonAfterNDays = new PrisonAfterNDays();
-        System.out.println(Arrays.toString(prisonAfterNDays.prisonAfterNDays(s, 28)));
+        System.out.println(Arrays.toString(prisonAfterNDays.prisonAfterNDays3(s, 7)));
     }
 }
 

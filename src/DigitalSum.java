@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DigitalSum {
@@ -22,6 +23,7 @@ public class DigitalSum {
         DigitalSum d = new DigitalSum();
         int[] l1 = new int[] {9,2,2};
         int[] l2 = new int[] {9,9};
+        System.out.println(Arrays.equals(l1,l2));
         System.out.println(d.getSum(l1, l2));
     }
 }
