@@ -51,7 +51,6 @@ public class BoundaryOfBinaryTree {
         nodes.add(10);
 
         System.out.println(nodes);
-
         bt = bt.createBinaryTree(nodes);
         bt.printBt(bt.root);
         BoundaryOfBinaryTree boundaryOfBinaryTree = new BoundaryOfBinaryTree();
