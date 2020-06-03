@@ -29,6 +29,7 @@ public class BoundaryOfBinaryTree {
         res.add(root.data);
     }
 
+
     private void leaves(Node root, List<Integer> res) {
         if (root == null) return;
         if (root.left == null && root.right == null) res.add(root.data);
