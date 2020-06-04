@@ -1,6 +1,8 @@
 package gragh;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class NumbersOfDistinctIsland {
@@ -35,6 +37,41 @@ public class NumbersOfDistinctIsland {
         }
     }
 
+    public int numDistinctIslands1(int[][] grid) {
+        if(grid == null || grid.length == 0 || grid[0].length == 0){
+            return 0;
+        }
+
+        HashSet<List<Integer>> shapes = new HashSet<List<Integer>>();
+        for(int i = 0; i<grid.length; i++){
+            for(int j = 0; j<grid[0].length; j++){
+                if(grid[i][j] == 1){
+                    List<Integer> shape = new ArrayList<Integer>();
+                    dfs(grid, i, j, shape, 0);
+                    System.out.println(shapes);
+                    shapes.add(shape);
+                }
+            }
+        }
+
+        return shapes.size();
+    }
+
+    private void dfs(int[][] grid, int i, int j, List<Integer> shape, int direction){
+        if(i<0 || i>=grid.length || j<0 || j>=grid[0].length || grid[i][j]!=1){
+            return;
+        }
+
+        grid[i][j] = 0;
+        shape.add(direction);
+        dfs(grid, i-1, j, shape, 1);
+        dfs(grid, i+1, j, shape, 2);
+        dfs(grid, i, j-1, shape, 3);
+        dfs(grid, i, j+1, shape, 4);
+
+        shape.add(0);
+    }
+
     public static void main(String[] args) {
         NumbersOfDistinctIsland numbersOfDistinctIsland = new NumbersOfDistinctIsland();
         int[][] grid = new int[][] {
@@ -43,7 +80,7 @@ public class NumbersOfDistinctIsland {
                 {0,0,0,0,1},
                 {1,1,0,1,1}
         };
-        System.out.println(numbersOfDistinctIsland.numDistinctIslands(grid));
+        System.out.println(numbersOfDistinctIsland.numDistinctIslands1(grid));
     }
 }
 //        [LeetCode] 694. Number of Distinct Islands 不同岛屿的个数
