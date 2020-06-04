@@ -17,18 +17,23 @@ public class MeetingRoomsII {
         int rooms = 0;
         for(int i = 0; i < intervals.length; i++) {
             endQueue.offer(intervals[i].end);
+            System.out.println(intervals[i].start);
             if(intervals[i].start < endQueue.peek()) {
+
                 rooms ++;
             } else {
                 endQueue.poll();
             }
+            System.out.println(endQueue);
         }
+        System.out.println(endQueue.size());
         return rooms;
     }
 
     public static void main(String[] args) {
         MeetingRoomsII meetingRoomsII = new MeetingRoomsII();
-        Interval[] intervals = {new Interval(1,10),new Interval(11, 20), new Interval(15, 30)};
+//        Interval[] intervals = {new Interval(1,10),new Interval(11, 20), new Interval(15, 30)};
+        Interval[] intervals = {new Interval(0,30),new Interval(5, 10), new Interval(15, 20)};
         System.out.println(meetingRoomsII.minMeetingRooms(intervals));
     }
 }
