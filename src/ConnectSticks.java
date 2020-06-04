@@ -21,6 +21,21 @@ public class ConnectSticks {
         return res;
     }
 
+    public int connectSticks1(int[] sticks) {
+        if(sticks == null || sticks.length == 0) return 0;
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for(int stick : sticks){
+            minHeap.add(stick);
+        }
+        int res = 0;
+        while(minHeap.size() > 1) {
+            int mergeCost = minHeap.poll() + minHeap.poll();
+            res += mergeCost;
+            minHeap.add(mergeCost);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         ConnectSticks connectSticks = new ConnectSticks();
         int[] sticks = new int[]{1,8,3,5};
