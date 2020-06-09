@@ -1,5 +1,8 @@
 package stack;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 public class MaxStack {
@@ -85,6 +88,7 @@ public class MaxStack {
 //        stack.peekMax();// -> 5
 //        stack.pop();// -> 1
 //        stack.top();// -> 5
+
     }
 }
 //
