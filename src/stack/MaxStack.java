@@ -88,7 +88,6 @@ public class MaxStack {
 //        stack.peekMax();// -> 5
 //        stack.pop();// -> 1
 //        stack.top();// -> 5
-
     }
 }
 //
