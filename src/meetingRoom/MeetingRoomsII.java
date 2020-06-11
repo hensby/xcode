@@ -13,16 +13,15 @@ public class MeetingRoomsII {
          Interval(int s, int e) { start = s; end = e; }
     }
     public int minMeetingRooms(Interval[] intervals) {
+        int len = intervals.length;
         Arrays.sort(intervals, (i1, i2)-> i1.start - i2.start);
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         pq.add(intervals[0].end);
-        int room = 0;
-        for(Interval interval: intervals) {
-            pq.add(interval.end);
-            if(interval.start > pq.peek()) pq.poll();
-            else room++;
+        for(int i = 1; i < len; i++) {
+            pq.add(intervals[i].end);
+            if(intervals[i].start > pq.peek()) pq.poll();
         }
-        return room;
+        return pq.size();
     }
 
     public static void main(String[] args) {
