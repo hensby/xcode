@@ -54,7 +54,8 @@ public class MeetingTimeEA {
     }
 }
 
-//   [5, 20],[10, 24]
+//
 //   slot1{{5, 10},{15, 20}, {25, 30}}  overlap
 //   slot2{{2, 19},{20, 30}}
 //   duration 3
+//   find earliest meeting time [5,7]
