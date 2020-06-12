@@ -21,7 +21,7 @@ public class MergeInterval {
             res.add(new int[]{left, right});
             i++;
         }
-        return res.toArray(new int[0][12]);
+        return res.toArray(new int[0][2]);
     }
 
     public static void main(String[] args) {
