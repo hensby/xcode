@@ -12,7 +12,7 @@ public class MeetingTimeEA {
         System.out.println(Arrays.deepToString(slot2));
         int len1 = slot1.length, len2 = slot2.length;
         int i = 0, j = 0;
-        while (i < len1 && j < len2) {
+        while (i < len1 && j < len2) {          // double pointer
             System.out.println(i + " " + j);
             if (slot1[i][0] < slot2[j][0] && slot1[i][1] < slot2[j][1]) i++;
             else if (slot1[i][0] > slot2[j][0] && slot1[i][1] < slot2[j][1]) j++;
