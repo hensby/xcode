@@ -3,33 +3,25 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class FirstUniqueNumber {
-    Set<Integer> all = new HashSet<>(); // 存储所有数字
-    Set<Integer> unique = new LinkedHashSet<>(); // 只存储唯一数
+    Set<Integer> all = new LinkedHashSet<Integer>();
+    Set<Integer> unique = new LinkedHashSet<Integer>();
     public FirstUniqueNumber(int[] nums) {
-        for(int n : nums){ // 循环每一个数字
-            if(all.contains(n)){ // 如果all中包含该数字
-                // 该数字不是唯一数，将其从unique中删除
-                unique.remove(n);
-            }else{ // 如果all中不包含该数字
-                all.add(n); // 将其添加至all
-                unique.add(n); // 将其添加至unique
-            }
+        for(int num: nums) {
+            if(!all.contains(num)) {
+                all.add(num);
+                unique.add(num);
+            } else unique.remove(num);
         }
     }
     public int showFirstUnique() {
-        if(unique.size()>0){ // 返回unique中首元素
-            return unique.iterator().next();
-        }
+        if(!unique.isEmpty()) return unique.iterator().next();
         return -1;
     }
     public void add(int value) {
-        // 与构造函数逻辑相同
-        if(all.contains(value)){
-            unique.remove(value);
-        }else{
+        if(!all.contains(value)) {
             all.add(value);
             unique.add(value);
-        }
+        } else unique.remove(value);
     }
 
     public static void main(String[] args) {
@@ -54,7 +46,6 @@ public class FirstUniqueNumber {
 //        int showFirstUnique() returns the value of the first unique integer of the queue, and returns -1 if there is no such integer.
 //        void add(int value) insert value to the queue.
 //        Example 1:
-//
 //        Input:
 //        ["firstUnique","showFirstUnique","add","showFirstUnique","add","showFirstUnique","add","showFirstUnique"]
 //        [[[2,3,5]],[],[5],[],[2],[],[3],[]]
