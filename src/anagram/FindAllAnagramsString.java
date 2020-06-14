@@ -65,6 +65,7 @@ public class FindAllAnagramsString {
                     valid--;
                 }
             }
+            System.out.println(window + " " + valid);
             // 如果 window 符合要求，即两个 map 存储的有效字符相同，就可以移动左指针了
             // 但是只有二个map存储的数据完全相同，才可以记录当前的起始索引，也就是left指针所在位置
             while (valid == 0) {
@@ -88,6 +89,6 @@ public class FindAllAnagramsString {
     public static void main(String[] args) {
         String s = "cbaebabacd", p =  "abc";
         FindAllAnagramsString f = new FindAllAnagramsString();
-        System.out.println(f.findAnagrams(s, p));
+        System.out.println(f.findAnagrams1(s, p));
     }
 }
