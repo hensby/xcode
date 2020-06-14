@@ -10,6 +10,7 @@ public class KthLargestElementinStream {
         for (int num : nums) {
             add(num);
         }
+        System.out.println(queue);
     }
 
     public int add(int val) {
