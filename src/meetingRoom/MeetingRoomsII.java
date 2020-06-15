@@ -12,6 +12,22 @@ public class MeetingRoomsII {
          Interval() { start = 0; end = 0; }
          Interval(int s, int e) { start = s; end = e; }
     }
+    public int minMeetingRooms1(Interval[] intervals) {
+        int len = intervals.length;
+        Arrays.sort(intervals, (i1, i2)-> i1.start - i2.start);
+        PriorityQueue<Interval> pq = new PriorityQueue<>((i1, i2) -> i1.end - i2.end);
+        pq.add(intervals[0]);
+        for(int i = 1; i < len; i++) {
+            System.out.println(pq);
+            Interval tmp = pq.peek();
+            if(intervals[i].start > tmp.end) {
+                pq.poll();
+            }
+            pq.add(intervals[i]);
+        }
+        return pq.size();
+    }
+
     public int minMeetingRooms(Interval[] intervals) {
         int len = intervals.length;
         Arrays.sort(intervals, (i1, i2)-> i1.start - i2.start);
@@ -27,7 +43,7 @@ public class MeetingRoomsII {
 
     public static void main(String[] args) {
         MeetingRoomsII meetingRoomsII = new MeetingRoomsII();
-        Interval[] intervals = {new Interval(1,10),new Interval(11, 20), new Interval(15, 30)};
+        Interval[] intervals = {new Interval(1,10),new Interval(11, 20), new Interval(15, 30), new Interval(25, 40)};
 //        Interval[] intervals = {new Interval(0,30),new Interval(5, 10), new Interval(15, 20)};
         System.out.println(meetingRoomsII.minMeetingRooms(intervals));
     }
