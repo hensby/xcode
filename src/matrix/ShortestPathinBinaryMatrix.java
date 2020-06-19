@@ -1,10 +1,11 @@
 package matrix;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 //1091
 public class ShortestPathinBinaryMatrix {
-    private static int[][] directions = {{0,1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {-1, -1}, {-1, 0}, {-1, 1}};
+    private static final int[][] directions = {{0,1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {-1, -1}, {-1, 0}, {-1, 1}};
     private int row, col;
     public int shortestPathBinaryMatrix(int[][] grid) {
         row = grid.length;
@@ -15,6 +16,7 @@ public class ShortestPathinBinaryMatrix {
         pos.add(new int[]{0,0});
         while(!pos.isEmpty() && grid[row - 1][col - 1] == 0){ // 求最短路径 使用BFS
             int[] xy = pos.remove();
+            System.out.println(xy[0] + " " + xy[1]);
             int preLength = grid[xy[0]][xy[1]]; // 当前点的路径长度
             for(int i = 0; i < 8; i++){
                 int newX = xy[0] + directions[i][0];
@@ -25,6 +27,7 @@ public class ShortestPathinBinaryMatrix {
                 }
             }
         }
+        System.out.println(Arrays.deepToString(grid));
         return grid[row - 1][col - 1] == 0 ? -1 : grid[row - 1][col - 1]; // 如果最后终点的值还是0，说明没有到达
     }
 
