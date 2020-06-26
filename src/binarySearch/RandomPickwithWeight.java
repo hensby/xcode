@@ -1,7 +1,7 @@
 package binarySearch;
 
 import java.util.*;
-
+//528
 public class RandomPickwithWeight {
 //
 //    //(wsum, index)
