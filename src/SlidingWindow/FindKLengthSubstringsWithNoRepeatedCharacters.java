@@ -1,5 +1,9 @@
 package SlidingWindow;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class FindKLengthSubstringsWithNoRepeatedCharacters {
     public int numKLenSubstrNoRepeats(String S, int K) {
         if(S == null || S.length() < K){
@@ -11,6 +15,7 @@ public class FindKLengthSubstringsWithNoRepeatedCharacters {
         int count = 0;
         int res = 0;
         while(runner < S.length()){
+            System.out.println(Arrays.toString(map));
             if(map[S.charAt(runner)-'a']++ > 0){
                 count++;
             }
@@ -31,11 +36,31 @@ public class FindKLengthSubstringsWithNoRepeatedCharacters {
         return res;
     }
 
+
+    public int numKLenSubstrNoRepeats1(String S, int K) {
+        if (S.length() < K) return 0;
+        int res = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        int i = 0;
+        int j = 0;
+        for (; j < K - 1; j++) {
+            map.put(S.charAt(j), map.getOrDefault(S.charAt(j), 0) + 1);
+        }
+        for (; j < S.length(); j++,i++) {
+            map.put(S.charAt(j), map.getOrDefault(S.charAt(j), 0) + 1);
+            if (map.size() == K) res++;
+            map.put(S.charAt(i), map.getOrDefault(S.charAt(i), 0) - 1);
+            if (map.get(S.charAt(i)) == 0) map.remove(S.charAt(i));
+        }
+        return res;
+    }
+
+
     public static void main(String[] args) {
         String S = "havefunonleetcode";
         int K = 5;
         FindKLengthSubstringsWithNoRepeatedCharacters f = new FindKLengthSubstringsWithNoRepeatedCharacters();
-        System.out.println(f.numKLenSubstrNoRepeats(S, K));
+        System.out.println(f.numKLenSubstrNoRepeats1(S, K));
     }
 }
 
