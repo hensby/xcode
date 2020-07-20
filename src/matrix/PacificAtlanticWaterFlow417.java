@@ -3,6 +3,7 @@ package matrix;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import static matrix.PrintMatrix.printMatrix;
 
 public class PacificAtlanticWaterFlow417 {
     private final int[][] d = {{-1, 0},{0, 1},{1, 0},{0, -1}};
@@ -23,13 +24,13 @@ public class PacificAtlanticWaterFlow417 {
         for (int i = 0; i < n; i++) {
             // 上边界
             dfs(matrix, 0, i, pacific);
-            // 右边界
+            // 下边界
             dfs(matrix, m - 1, i, atlantic);
         }
         for (int i = 0; i < m; i++) {
             // 左边界
             dfs(matrix, i, 0, pacific);
-            // 下边界
+            // 右边界
             dfs(matrix, i, n - 1, atlantic);
         }
 
