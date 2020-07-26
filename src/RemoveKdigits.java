@@ -25,11 +25,13 @@ public class RemoveKdigits {
 
         for(char digit : num.toCharArray()) {
             while(stack.size() > 0 && k > 0 && stack.peekLast() > digit) {
+                System.out.println(stack.peek());
                 stack.removeLast();
                 k -= 1;
             }
             stack.addLast(digit);
         }
+
         System.out.println(stack);
         /* remove the remaining digits from the tail. */
         for(int i=0; i<k; ++i) {
@@ -51,7 +53,7 @@ public class RemoveKdigits {
     }
 
     public static void main(String[] args) {
-        String input = "1412991221";
+        String input = "12345264";
         RemoveKdigits r = new RemoveKdigits();
         System.out.println(r.removeKdigits1(input, 3));
     }
