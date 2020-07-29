@@ -2,8 +2,8 @@ package greedy;
 
 import java.util.Arrays;
 import java.util.Comparator;
-
-public class EraseOverlapIntervals {
+//435
+public class EraseOverlapIntervals435 {
     public int eraseOverlapIntervals(int[][] intervals) {
         if (intervals.length == 0) {
             return 0;
@@ -23,9 +23,9 @@ public class EraseOverlapIntervals {
 
     public static void main(String[] args) {
         int[][] input = new int[][] {
-                {1,2},{2,3},{3,4},{1,3}
+            {1,2},{2,3},{3,4},{1,3}
         };
-        EraseOverlapIntervals e = new EraseOverlapIntervals();
+        EraseOverlapIntervals435 e = new EraseOverlapIntervals435();
         System.out.println(e.eraseOverlapIntervals(input));
     }
 }
