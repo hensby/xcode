@@ -9,6 +9,7 @@ public class EraseOverlapIntervals435 {
             return 0;
         }
         Arrays.sort(intervals, Comparator.comparingInt(o -> o[1]));
+        System.out.println(Arrays.deepToString(intervals));
         int cnt = 1;
         int end = intervals[0][1];
         for (int i = 1; i < intervals.length; i++) {

@@ -19,7 +19,7 @@ public class PartitionLabels {
             char startLetter = s.charAt(start);
             int endindex = indexTable[startLetter - 'a'];
             for (int i = 0; i < endindex; i++) {
-                System.out.println(endindex);
+//                System.out.println(endindex);
                 endindex = indexTable[s.charAt(i) - 'a'] > endindex ? indexTable[s.charAt(i) - 'a']:endindex;
             }
             res.add(endindex - start + 1);
