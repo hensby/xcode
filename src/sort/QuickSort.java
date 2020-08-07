@@ -3,6 +3,30 @@ package sort;
 import java.util.Arrays;
 
 public class QuickSort {
+    public static void quicksort1(int[] arr, int l, int r) {
+        int i = l, j = r, stand = arr[i];
+        if(l < r) {
+            while(l < r) {
+                while(l < r && arr[r] > stand) {
+                    r--;
+                }
+                swap(arr, l, r);
+                while(l < r && arr[l] < stand) {
+                    l++;
+                }
+                swap(arr, l, r);
+            }
+            quickSort(arr, i, l - 1);
+            quickSort(arr, l + 1, j);
+        }
+    }
+    public static void swap(int[] arr, int l, int r) {
+        int tmp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = tmp;
+    }
+
+
     private static void sort(int[] arr, int l, int r) {
         int i = l;
         int j = r;
@@ -70,7 +94,7 @@ public class QuickSort {
         System.out.println(Arrays.toString(arr));
 
         int[] arr1 = new int[]{5, 3, 4, 1, 6, 322, 66, 2, 78};
-        quickSort(arr1, 0, arr1.length - 1);
+        quicksort1(arr1, 0, arr1.length - 1);
         System.out.println(Arrays.toString(arr1));
 
     }
