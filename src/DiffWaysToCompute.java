@@ -53,13 +53,13 @@ public class DiffWaysToCompute {
         for (int i = 0; i < input.length(); i++) {
             //通过运算符将字符串分成两部分
             if (isOperation(input.charAt(i))) {
-                List<Integer> result1 = diffWaysToCompute(input.substring(0, i));
-                List<Integer> result2 = diffWaysToCompute(input.substring(i + 1));
+                List<Integer> result1 = diffWaysToCompute1(input.substring(0, i));
+                List<Integer> result2 = diffWaysToCompute1(input.substring(i + 1));
                 //将两个结果依次运算
-                for (int j = 0; j < result1.size(); j++) {
-                    for (int k = 0; k < result2.size(); k++) {
+                for (Integer integer : result1) {
+                    for (Integer value : result2) {
                         char op = input.charAt(i);
-                        result.add(caculate(result1.get(j), op, result2.get(k)));
+                        result.add(caculate(integer, op, value));
                     }
                 }
             }
