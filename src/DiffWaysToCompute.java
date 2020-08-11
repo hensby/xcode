@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiffWaysToCompute {
-    public  List<Integer> diffWaysToCompute(String input) {
+    public List<Integer> diffWaysToCompute(String input) {
         List<Integer> ways = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
@@ -32,7 +32,7 @@ public class DiffWaysToCompute {
         return ways;
     }
 
-    public  List<Integer> diffWaysToCompute1(String input) {
+    public List<Integer> diffWaysToCompute1(String input) {
         if (input.length() == 0) {
             return new ArrayList<>();
         }
@@ -67,7 +67,7 @@ public class DiffWaysToCompute {
         return result;
     }
 
-    private  int caculate(int num1, char c, int num2) {
+    private int caculate(int num1, char c, int num2) {
         switch (c) {
             case '+':
                 return num1 + num2;
@@ -79,7 +79,7 @@ public class DiffWaysToCompute {
         return -1;
     }
 
-    private  boolean isOperation(char c) {
+    private boolean isOperation(char c) {
         return c == '+' || c == '-' || c == '*';
     }
 
