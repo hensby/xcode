@@ -1,6 +1,8 @@
+package divideAndConquer;
+
 import java.util.ArrayList;
 import java.util.List;
-
+// 241
 public class DiffWaysToCompute {
     public List<Integer> diffWaysToCompute(String input) {
         List<Integer> ways = new ArrayList<>();

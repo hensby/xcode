@@ -62,6 +62,56 @@ public class PacificAtlanticWaterFlow417 {
         return x >= 0 && x < m && y >= 0 && y < n;
     }
 
+
+    int[][] directions = new int[][] {{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
+    List<List<Integer>> res = new ArrayList<>();
+    int row, col;
+    int[][] matrix;
+    public List<List<Integer>> pacificAtlantic1(int[][] matrix) {
+        if(matrix == null || matrix.length == 0) return res;
+        this.matrix = matrix;
+        this.row = matrix.length;
+        this.col = matrix[0].length;
+        boolean[][] pacific = new boolean[row][col];
+        boolean[][] atlantic = new boolean[row][col];
+        for(int i = 0; i < row; i++) {
+            dfs(i, 0, pacific);
+            dfs(i, col - 1, atlantic);
+        }
+
+        for(int j = 0; j < col; j++) {
+            dfs(0, j, pacific);
+            dfs(row - 1, j, atlantic);
+        }
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                if(pacific[i][j] && atlantic[i][j]) {
+                    res.add(Arrays.asList(i, j));
+                }
+            }
+        }
+        System.out.println(Arrays.deepToString(pacific));
+        System.out.println(Arrays.deepToString(atlantic));
+        return res;
+    }
+
+    public void dfs(int r, int c, boolean[][] visited) {
+        visited[r][c] = true;
+//        if(!isValid(r, c) || visited[r][c]) return;
+        for(int[] direction: directions) {
+            int newR = r + direction[0];
+            int newC = c + direction[1];
+            if(!isValid(newR, newC) || matrix[r][c] > matrix[newR][newC] || visited[newR][newC]) {
+                continue;
+            }
+            dfs(newR, newC, visited);
+        }
+    }
+
+    public boolean isValid(int r, int c) {
+        return r >= 0 && r < row && c >= 0 && c <col;
+    }
+
     public static void main(String[] args) {
         int[][] input = new int[][] {
                 {1,2,2,3,5},
@@ -71,7 +121,7 @@ public class PacificAtlanticWaterFlow417 {
                 {5,1,1,2,4}
         };
         PacificAtlanticWaterFlow417 p = new PacificAtlanticWaterFlow417();
-        System.out.println(p.pacificAtlantic(input));
+        System.out.println(p.pacificAtlantic1(input));
     }
 
 }
