@@ -27,31 +27,6 @@ public class QuickSort {
     }
 
 
-    private static void sort(int[] arr, int l, int r) {
-        int i = l;
-        int j = r;
-        if (l < r) {
-            while (l < r) {
-                while (l < r && arr[r] >= arr[l]) {
-                    r--;
-                }
-                int tmp = arr[l];
-                arr[l] = arr[r];
-                arr[r] = tmp;
-
-                while (l < r && arr[l] <= arr[r]) {
-                    l++;
-                }
-                tmp = arr[l];
-                arr[l] = arr[r];
-                arr[r] = tmp;
-
-            }
-            sort(arr, i, l - 1);//递归左边，此时l=5
-            sort(arr, l + 1, j);//递归右边，此时l=5
-        }
-    }
-
     public static void quickSort(int[] arr, int start, int end) {
 
         //当开始位置小于结束位置时（数组有数据）  进行排序  也就是递归入口
@@ -90,7 +65,7 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int[] arr = {5,2,1,8,9,3,7,0,4,6};
-        sort(arr, 0, arr.length - 1);
+        quickSort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
 
         int[] arr1 = new int[]{5, 3, 4, 1, 6, 322, 66, 2, 78};
