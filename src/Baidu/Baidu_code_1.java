@@ -1,3 +1,5 @@
+package Baidu;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -15,7 +17,7 @@ import java.util.PriorityQueue;
 //map<> string int
 //map<> string int
 //keyset
-public class code {
+public class Baidu_code_1 {
     public String[] getCommonWords(String[] s1, String[] s2) {
         if(s1.length == 0 || s2.length == 0) return new String[0];
         Map<String, Integer> map1 = new HashMap<>();
