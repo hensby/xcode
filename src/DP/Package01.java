@@ -28,8 +28,8 @@ public class Package01 {
     public static void main(String[] args) {
         int W = 15;
         int N = 5;
-        int[] weights = new int[] {5,4,7,2,6};
-        int[] values = new int[] {12,3,10,3,6};
+        int[] weights = new int[] {1,5,4,7,2,6};
+        int[] values = new int[] {3,12,3,10,3,6};
         Package01 p = new Package01();
         System.out.println(p.knapsack(W, N, weights, values));
     }
