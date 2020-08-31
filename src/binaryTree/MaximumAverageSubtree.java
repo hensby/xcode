@@ -19,21 +19,35 @@ public class MaximumAverageSubtree {
 
     double result = 0;
 
+//    public double maximumAverageSubtree(TreeNode root) {
+//        getSumAndCount(root);
+//        return result;
+//    }
+//
+//    public int[] getSumAndCount(TreeNode root) {
+//        if (root == null) {
+//            return new int[] {0, 0};
+//        }
+//        int[] left = getSumAndCount(root.left);
+//        int[] right = getSumAndCount(root.right);
+//        int sum = left[0] + right[0] + root.val;
+//        int count = left[1] + right[1] + 1;
+//        result = Math.max(result, 1.0 * sum / count);
+//        return new int[] {sum, count};
+//    }
     public double maximumAverageSubtree(TreeNode root) {
         getSumAndCount(root);
         return result;
     }
 
     public int[] getSumAndCount(TreeNode root) {
-        if (root == null) {
-            return new int[] {0, 0};
-        }
+        if(root == null) return new int[]{0,0};
         int[] left = getSumAndCount(root.left);
         int[] right = getSumAndCount(root.right);
         int sum = left[0] + right[0] + root.val;
         int count = left[1] + right[1] + 1;
-        result = Math.max(result, 1.0 * sum / count);
-        return new int[] {sum, count};
+        result = Math.max(result, (double)sum / count);
+        return new int[]{sum, count};
     }
 
     public static void main(String[] args) {
