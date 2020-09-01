@@ -11,7 +11,6 @@ public class TopKFrequentlyMentionedKeywords {
             for(String w: words) {
                 if(keywordsSet.contains(w)) {
                     map.put(w, map.getOrDefault(w,0) + 1);
-                    continue;
                 }
             }
         }
