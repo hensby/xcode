@@ -2,7 +2,7 @@ package matrix;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// 46
 public class Permutations {
     List<List<Integer>> res ;
     int len;
@@ -39,7 +39,6 @@ public class Permutations {
                 tmpRes.remove(tmpRes.size() - 1);
             }
         }
-        return;
     }
 
     public static void main(String[] args) {
