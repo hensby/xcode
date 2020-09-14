@@ -1,4 +1,5 @@
-package databrick.test;//这道题我看之前各位的面经一直对什么地方该split什么地方不该感到困惑，结果还是让我遇到了，仔 细看题之后发现只需要按照空格分就行了，
+package databrick.test;
+//这道题我看之前各位的面经一直对什么地方该split什么地方不该感到困惑，结果还是让我遇到了，仔细看题之后发现只需要按照空格分就行了，
 //broken keyboard 键盘的部分英文字母键坏了(注意只有字母键坏了) 给定一个String 和 一个char Array(没坏的字母键)，输出String中能打出的字符串数。
 //栗子:
 //input “hello, world!” ['i','e','o','l','h']; output: 1 (只能打出 hello 这个单词)
@@ -25,27 +26,23 @@ public class brokeKeyboard {
                         flag = true;
                         break;
                     }
-
                 }
             }
-            if(flag == true){
+            if(flag) {
                 flag = false;
-            }else{
+            } else {
                 res++;
             }
-
         }
         return res;
     }
 
     public static void main(String[] args){
         brokeKeyboard bk = new brokeKeyboard();
-        String sentence = "hEllo##, This^^";
+        String sentence = "hEllo##, hello This^^";
         List<Character> list = Arrays.asList('i','e','o','l','h','t', 's');
         int res = bk.solution(sentence, list);
         System.out.print("res: ");
         System.out.print(res);
     }
 }
-
-
