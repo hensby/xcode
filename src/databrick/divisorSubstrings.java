@@ -1,4 +1,5 @@
-package databrick;//给一个数字, 和一个 k 值(表示除数位数),
+package databrick;
+//给一个数字, 和一个 k 值(表示除数位数),
 // 看能用多少个sub number整除 ex: n = 1220 k = 2 => 1220 % 12 != 0, 1220 % 22 != 0, 1220 % 20 == 0 => ans : 1
 
 public class divisorSubstrings {

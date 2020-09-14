@@ -22,7 +22,6 @@ public class findMinimumNumber {
             if(arrays[i][0]<=right){
                 left = arrays[i][0];
                 right  = Math.min(right, arrays[i][1]);//若左边小于前面的右，取最小区间
-
             }else{
                 int[] temp = {left, right};
                 res.add(temp);
@@ -33,17 +32,16 @@ public class findMinimumNumber {
         int[] temp = {left, right};
         res.add(temp);
 
+        for(int i=0; i<res.size(); i++){
+            int[]range = res.get(i);
+            System.out.print("(");
+            System.out.print(range[0]);
+            System.out.print(",");
+            System.out.print(range[1]);
+            System.out.print(")");
+            System.out.print(" ");
 
-//        for(int i=0; i<res.size(); i++){
-//            int[]range = res.get(i);
-//            System.out.print("(");
-//            System.out.print(range[0]);
-//            System.out.print(",");
-//            System.out.print(range[1]);
-//            System.out.print(")");
-//            System.out.print(" ");
-//
-//        }
+        }
         return res.size();//结果就是有几个这种交集区间
 
     }

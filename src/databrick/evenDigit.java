@@ -9,6 +9,7 @@ public class evenDigit {
         if(A.length==0) return res;
         for(int num: A){
             while(num>0){
+//                System.out.println("num: " + num);
                 int temp = num%10;
                 if(temp %2 == 0){
                     res++;
@@ -22,8 +23,8 @@ public class evenDigit {
     }
     public static void main(String[] args){
         evenDigit ed = new evenDigit();
-        int[] A = {12,344,52,3456};
+        int[] A = {12,344,52,3456, 2, 3};
         System.out.print("Res: ");
-        System.out.print(ed.solution(A));
+        System.out.println(ed.solution(A));
     }
 }

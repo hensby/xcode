@@ -1,4 +1,5 @@
-package databrick;//int fun(int[] a), a 由 1 和 0 组成. 求 0，1 个数相同的 subarray 最大长度.
+package databrick;
+//int fun(int[] a), a 由 1 和 0 组成. 求 0，1 个数相同的 subarray 最大长度.
 //用 HashMap 就好 (convert 0 to -1) rameWindow (有点忘记名字了) : Given an int n, print
 //the *** window frame of the number;
 //Example: input -> n = 6

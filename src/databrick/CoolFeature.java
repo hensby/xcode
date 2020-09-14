@@ -1,4 +1,4 @@
-package databrick.test;
+package databrick;
 //最开始有3个case超时，原因是每次执行问加起来等于target的情况有多少种的那个query时，我都是 重新算一遍记录b数组每个数出现次数的HashMap，其实只用最开始构好，然后每次做第二种 query([index, num])，更新一下HashMap就行。改了就过了。
 //Give three array ​a​, ​b​ and ​query​. This one is hard to explain. Just read the example.
 //Input:

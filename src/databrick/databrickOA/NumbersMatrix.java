@@ -1,4 +1,4 @@
-package databrickOA;
+package databrick.databrickOA;
 
 public class NumbersMatrix {
 //    第二题： 给一个3 x n 的numbers matrix。 然后让你sliding window，检查每个3 x 3的matrix是否正好包含1-9的数字，output 一个boolean [], 把每个window的结果保存。

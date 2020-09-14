@@ -25,16 +25,13 @@ public class GoodTuple {
 
     public int solution(int[] array){
         if(array.length == 0 || array==null) return 0;
-        int pre2 = array[0];
-        int pre1 = array[1];
         int res = 0;
         int total = array.length-2;
         for(int i=2; i<array.length; i++){
-            if((array[i] == pre1 && pre1 != pre2) || (array[i] == pre2 && array[i] != pre1) || (pre1 == pre2 && array[i] != pre1)){//防止三个相等
+            if((array[i] == array[i - 1] && array[i - 1] != array[i - 2]) ||
+                    (array[i] == array[i - 2] && array[i] != array[i - 1]) || (array[i - 1] == array[i - 2] && array[i] != array[i - 1])){//防止三个相等
                 res++;//三个三个判断
             }
-            pre2 = pre1;
-            pre1 = array[i];
         }
         return res;
     }

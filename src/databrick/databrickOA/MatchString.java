@@ -1,4 +1,4 @@
-package databrickOA;
+package databrick.databrickOA;
 
 public class MatchString {
     //第一题： 题目比较简单，给两个input String t 和 s, 让你数有多少个match。match的条件是 t的index i, i + 2, i + 4 凑成一起的新的String 正好等于s

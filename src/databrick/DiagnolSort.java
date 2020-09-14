@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Diagnolsort {
+public class DiagnolSort {
 
     public void solution(int[][] matrix){
         if(matrix.length == 0 || matrix == null) return ;
@@ -53,7 +53,7 @@ public class Diagnolsort {
     }
 
     public static void main(String[] args){
-        Diagnolsort ds = new Diagnolsort();
+        DiagnolSort ds = new DiagnolSort();
         int[][] matrix = {{8,4,1,7}, {4,4,1,3}, {4,8,9,2}, {2,5,3,1}};
 
         System.out.print("original: ");
