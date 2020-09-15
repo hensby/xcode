@@ -1,8 +1,8 @@
-package databrick;//给int n, m，想象n*m的矩阵M, M[i,j] = (i+1)*(j+1)，0-based ​​​​​​​​​​​​​​​​​​​一系列query，有三种类型，第一种是查询矩阵中最小的元素，第二、三分别是禁用某一行、列。 一个2D array的min number的query
-//题目是说给你一个2d array。其中array​[j] = (i+1)*(j+1)。这个给定。 然后给一堆query，有三种不同的格式:
+package databrick;//给int n, m，想象n*m的矩阵M, M[i,j] = (i+1)*(j+1)，0-based 一系列query，有三种类型，第一种是查询矩阵中最小的元素，第二、三分别是禁用某一行、列。 一个2D array的min number的query
+//题目是说给你一个2d array。其中array[j] = (i+1)*(j+1)。这个给定。 然后给一堆query，有三种不同的格式:
 //第一种是让你返回当前array中的最小值
 //第二种是让你把某一行disable
-//第三种是把某一列disab​​​​​​​​​​​​​​​​​​​le
+//第三种是把某一列disable
 //当然disable了之后最小值就不能用了
 
 import java.util.ArrayList;

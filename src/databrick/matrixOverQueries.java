@@ -2,24 +2,21 @@ package databrick;//给一个array和一个matrix。 matrix里面每一个vector
 //array = [1,1,2,3,2]
 //matrix = [[1,2,1],
 //[2,4,2],
-//[0,3,1]] output : 5
-//因为在matrix[0], array的index 1到2区​​​​​​​​​​​​​​​​​​​间出现了1 一次， matrix[1], array的index 2到4区间出现2 两次。 matrx[2], array的index 0到3区间出现1 两次
+//[0,3,1]]
+//output : 5
+//因为在matrix[0], array的index 1到2区间出现了1 一次， matrix[1], array的index 2到4区间出现2 两次。 matrx[2], array的index 0到3区间出现1 两次
 //这个题如果直接暴力解O(n*n)会有两个test case过不了。我是用hashmap<int, vector<pair<int,int>>> 。 key是target， value是index区间。 这样走一遍array，每次确定一下当前index在不在区间里就行了。
 //1， [[1,2],[0,1]]
 //2, [[2,4]]
 //然后loop一遍array,
-//i =0, arr​ = 1, 然后这个时候判断map.containKey(arr)，然后走一遍key里的value，因为 0 <= i <= 1 ，所以output++;
+//i =0, arr = 1, 然后这个时候判断map.containKey(arr)，然后走一遍key里的value，因为 0 <= i <= 1 ，所以output++;
 
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class matrixOverQueries {
     public int solution(int[][] matrix, int[] array){
         Map<Integer, List<int[]>>mapping = new HashMap<>();
-        if(matrix.length == 0 || matrix == null) return 0;
+        if(matrix == null || matrix.length == 0) return 0;
         int res = 0;
 
         for(int i=0; i<matrix.length; i++){
@@ -38,6 +35,7 @@ public class matrixOverQueries {
             if(mapping.containsKey(array[i])){
                 List<int[]> dis = mapping.get(array[i]);
                 for(int[] nums: dis){
+                    System.out.println(Arrays.toString(nums));
                     if(i>=nums[0] && i<=nums[1]){
                         res++;
                     }
@@ -48,7 +46,7 @@ public class matrixOverQueries {
     }
 
     public static void main(String[] args){
-        int[][] matrix = {{1,3,1}, {2,4,3}, {0,3,1}};
+        int[][] matrix = {{1,4,1}, {2,4,3}, {0,3,1}};
         matrixOverQueries mq = new matrixOverQueries();
         int[] array = {1,1,2,3,2};
         System.out.print("res: ");

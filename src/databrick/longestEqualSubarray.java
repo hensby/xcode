@@ -12,6 +12,8 @@ package databrick;
 //"********"
 // ]
 
+import java.util.Arrays;
+
 public class longestEqualSubarray {
     public char[][] solution(int n){
         char[][] res  =new char[n][n+2];
@@ -37,7 +39,8 @@ public class longestEqualSubarray {
 
     public static void main(String[] args){
         longestEqualSubarray ls = new longestEqualSubarray();
-        char[][] res = ls.solution(6);
+        char[][] res = ls.solution(8);
+//        System.out.println(Arrays.deepToString(res));
         for(int i=0; i<res.length; i++){
             for(int j=0; j<res[0].length; j++){
                 System.out.print(res[i][j]);
