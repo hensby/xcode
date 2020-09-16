@@ -21,6 +21,8 @@ public class getMinDiff {
     }
 }
 
+
+
 //Point i1234 int. x
 //
 //int yi

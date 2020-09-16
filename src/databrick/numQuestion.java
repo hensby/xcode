@@ -1,4 +1,5 @@
-package databrick;//给一个数num, 返回这个数每一个digit的乘积: product 和 每一位digit的和: sum的差值
+package databrick;
+//给一个数num, 返回这个数每一个digit的乘积: product 和 每一位digit的和: sum的差值
 
 public class numQuestion {
     public int solution(int num){
@@ -16,6 +17,6 @@ public class numQuestion {
 
     public static void main(String[] args){
         numQuestion nq = new numQuestion();
-        System.out.print(nq.solution(0));
+        System.out.print(nq.solution(912));
     }
 }

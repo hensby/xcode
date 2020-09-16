@@ -21,12 +21,10 @@ public class Ribbon {
             }else{
                 end=mid;
             }
-
         }
         if(sum(A, end) == k) return end;
         if(sum(A, start) == k) return start;
         return 0;
-
     }
 
     public int sum(int[] A, int cut){
