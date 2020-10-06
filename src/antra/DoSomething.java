@@ -2,13 +2,13 @@ package antra;
 
 import java.util.Scanner;
 
-public class DoSomething13 {
+public class DoSomething {
 
-    public static void doSomething(int x) {
+    public static void doSomething(int x) {  // sum of 1 to x
         System.out.println((1 + x) * x / 2);
     }
 
-    public static void doSomethingHelper(String x1) {
+    public static void doSomethingHelper(String x1) { // solve three case
         if(x1.equals("q")) {
             System.out.println("quit");
             return;
@@ -19,11 +19,10 @@ public class DoSomething13 {
             for(int i = 0; i < x; i++) {
                 doSomething(x);
             }
-            getInput();
         } else {
             System.out.println("error");
-            getInput();
         }
+        getInput();
     }
 
     public static void getInput() {
@@ -36,5 +35,4 @@ public class DoSomething13 {
     public static void main(String[] args) {
         getInput();
     }
-
 }
