@@ -15,7 +15,6 @@ public class countFiles {
             if(array == null || array.length == 0) {
                 throw new FolderNotFoundException("file Not found");
             }
-//            System.out.println(array.length);
             String[] fileNames = new String[array.length];
             Set<String> extenSet = new HashSet<String>();
             if(!include) {
@@ -46,11 +45,15 @@ public class countFiles {
                 }
                 System.out.println("There are " + countFile + " file(s) and " + countFolder + " folder(s) inside folder {" + path + "} with extension" + extenSet.toString());
             }
+            criteria.setExtensions(extenSet);
         } catch (Exception e) {
             e.printStackTrace();
             start();
         }
-        System.out.println("in main");
+        System.out.println("\nCriteria path name:\n " + criteria.getFolderPath() +"\n");
+        System.out.println("Criteria include Subfolder:\n " + criteria.getIncludeSubfolder() + "\n");
+        System.out.println("Criteria extensions: \n" + criteria.getExtensions().toString());
+
     }
 
 
@@ -63,7 +66,6 @@ public class countFiles {
 
     public static void main(String[] args) throws Exception {
         start();
-
-        ///Users/wanghengchao/OneDrive - Capital University of Serbia/material/batch062020/src/com/antra
+        ///Users/wanghengchao/OneDrive - Capital University of Serbia/material
     }
 }

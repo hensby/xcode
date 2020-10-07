@@ -1,10 +1,12 @@
 package antra;
 
+import java.util.Set;
+
 public class Criteria {
 
     private String folderPath;
     private boolean includeSubfolder;
-    private String[] extensions;
+    private Set<String> extensions;
     private int fileNumber;
 
     public Criteria(String folderPath, boolean includeSubfolder) {
@@ -12,11 +14,10 @@ public class Criteria {
         this.includeSubfolder = includeSubfolder;
     }
 
-
-    public void setExtensions(String[] extensions) {
+    public void setExtensions(Set<String> extensions) {
         this.extensions = extensions;
     }
-    public String[] getExtensions() {
+    public Set<String> getExtensions() {
         return extensions;
     }
     public void setFolderPath(String folderPath) {
