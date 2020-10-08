@@ -16,9 +16,13 @@ public class Person implements Serializable {
         this.pwd = pwd;
     }
 
+    public Person(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
-        return "toString";
+        return "person override toString " + name;
     }
 
     @Override
