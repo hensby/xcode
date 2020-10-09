@@ -6,8 +6,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class WriteThread extends Thread {
-    ArrayList<String> output = new ArrayList<String>();
-
+    ArrayList<String> output;
     String path;
 
     public WriteThread(ArrayList<String> output, String path) {
