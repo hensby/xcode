@@ -9,7 +9,7 @@ public class CalculatorThread1 extends Thread {
 
     @Override
     public void run() {
-        calculator.calculate();
+        calculator.printRes(1);
     }
 
 }
