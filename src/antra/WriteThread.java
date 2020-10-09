@@ -18,7 +18,6 @@ public class WriteThread extends Thread {
     public void run() {
         try {
             File file = new File(path);
-            //如果没有文件就创建
             if (!file.isFile()) {
                 file.createNewFile();
             }
