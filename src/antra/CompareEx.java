@@ -1,4 +1,4 @@
-package antra.example;
+package antra;
 
 import java.util.ArrayList;
 import java.util.Collections;

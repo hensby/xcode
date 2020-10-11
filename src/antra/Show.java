@@ -1,4 +1,4 @@
-package antra.example;
+package antra;
 
 public class Show {
     String name;

@@ -6,21 +6,33 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ColleactionEx {
 
     public static void listImpl() {
-        //        List<Integer> a = new ArrayList<>();
-//        Vector<Integer> a = new Vector<>();
-//        Stack<Integer> a = new Stack<>();
-        LinkedList<Integer> a = new LinkedList<>();
+//        List<Integer> a = new ArrayList<>(); // Object array ds// allow duplicate
+//        Vector<Integer> a = new Vector<>(); //Resizeable array Data Structure
+        Stack<Integer> a = new Stack<>(); // LIFO synchronized class
+//        LinkedList<Integer> a = new LinkedList<>(); // double linked list
         a.add(11);
         a.add(23);
         a.add(34);
         a.add(93);
+
+        // a.remove(11); // cannot work only can remove(Object) / remove(index)
+        a.remove((Integer) 11);
+
+//        for(int i: a) {
+//            System.out.println(i);
+//        }
+        Iterator it = a.iterator();
+        while(it.hasNext()) {
+            System.out.println(it.next());
+        }
         System.out.println(a);
-        List li = Collections.unmodifiableList(a); // unmodifiable
-        li.add(222);
+//        List li = Collections.unmodifiableList(a); // unmodifiable cannot modify
+//        li.add(222);
     }
 
     public static void setImpl() {
-        HashSet<Object> hs = new HashSet<>(); // not have duplicate
+//        HashSet<Object> hs = new HashSet<>(); // don't have duplicate // disordered // hashtable ds
+        LinkedHashSet hs = new LinkedHashSet<>();
         hs.add(23);
         hs.add(22);
         hs.add(33);
@@ -33,7 +45,7 @@ public class ColleactionEx {
     }
 
     public static void treeSetImpl() {
-        TreeSet<Object> hs = new TreeSet<>(); // sorted follow balance tree DE
+        TreeSet hs = new TreeSet<>(); // sorted follow balance tree DE
         hs.add(23);
         hs.add(22);
         hs.add(33);
@@ -46,14 +58,14 @@ public class ColleactionEx {
     }
 
     public static void mapEx() {
-        HashMap hm = new HashMap(); // key cannot be duplicate // is unordered
-//        LinkedHashMap hm = new LinkedHashMap(); // in order
-//        ConcurrentHashMap hm = new ConcurrentHashMap(); // onetime, synchronized
+//        HashMap hm = new HashMap(); // key cannot be duplicate // is unordered // hashtable DS
+//        LinkedHashMap hm = new LinkedHashMap(); // in order // hashtable + LinkedList DS
+        ConcurrentHashMap hm = new ConcurrentHashMap(); // onetime, synchronized
         hm.put(1, "whc");
         hm.put(2, "henry");
         hm.put(3, "rick");
         hm.put(new Person("tom"), "new person");
-        hm.put(null, "ddd");
+        hm.put(null, "ddd");   // support
         hm.remove(null);
         System.out.println(hm);
 
@@ -82,5 +94,6 @@ public class ColleactionEx {
 //        treeSetImpl();
         mapEx();
 //        hashTableEx();
+        System.out.println("4321".hashCode());
     }
 }

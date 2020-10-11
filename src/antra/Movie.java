@@ -1,4 +1,4 @@
-package antra.example;
+package antra;
 
 public class Movie implements Comparable<Movie> {
 
