@@ -2,6 +2,7 @@ package antra.readAndWrite;
 
 
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -14,8 +15,9 @@ public class Calculate {
         WriteThread1 writer = new WriteThread1(queue);
 
         new Thread(reader).start();
+        Scanner s = new Scanner(System.in);
+
         new Thread(writer).start();
     }
-
 
 }
