@@ -1,4 +1,4 @@
-package antra;
+package antra.readAndWrite;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

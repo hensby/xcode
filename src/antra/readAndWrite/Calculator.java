@@ -1,14 +1,16 @@
-package antra;
+package antra.readAndWrite;
+
+import antra.readAndWrite.ReadThread;
+import antra.readAndWrite.WriteThread;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Stack;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class Calculate {
+public class Calculator {
 
     public static int calculate(String s) {
         Stack<Integer> numStack = new Stack<>();

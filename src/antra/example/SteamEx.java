@@ -5,13 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Java8Feature {
+public class SteamEx {
     //Stream api
     public static void main(String[] args) {
+
         BiFunction<Integer, Integer, Integer> biFunction = (i, j) -> {return i + j;};
+        System.out.println(biFunction.apply(1,2));
+
+        Supplier<Double> randomNum = ()->{return Math.random();};
+        System.out.println(randomNum.get());
 
         List<Integer> list = new ArrayList<>();
         for(int i = 0; i < 20; i++) {
