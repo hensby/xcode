@@ -23,6 +23,7 @@ public class ExecutorServiceEx {
         for(int i = 1; i < 10; i++) {
             al.add(new Task3(i));
         }
+        newMultipleThreadExecutor.submit(new Task3(2));
 
         List<Future<String>> invokeAll = newMultipleThreadExecutor.invokeAll(al);
         for(Future f:invokeAll) {

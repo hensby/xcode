@@ -7,15 +7,15 @@ public class JDBCDriver {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-        Scanner sc=new Scanner(System.in);
-		System.out.println("please enter id:");
-		int id=sc.nextInt();
-
-		System.out.println("please enter name:");
-		String name=sc.next();
-
-		System.out.println("please enter salary:");
-		int sal=sc.nextInt();
+//        Scanner sc=new Scanner(System.in);
+//		System.out.println("please enter id:");
+//		int id=sc.nextInt();
+//
+//		System.out.println("please enter name:");
+//		String name=sc.next();
+//
+//		System.out.println("please enter salary:");
+//		int sal=sc.nextInt();
 
 //        Driver driver = new com.mysql.jdbc.Driver();
 //        Driver driver = new com.mysql.cj.jdbc.Driver();
