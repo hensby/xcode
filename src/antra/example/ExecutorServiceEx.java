@@ -29,16 +29,16 @@ public class ExecutorServiceEx {
         for(Future f:invokeAll) {
             System.out.println(f.get());
         }
-        newMultipleThreadExecutor.shutdown();
-
-        //        newMultipleThreadExecutor.execute(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                System.out.println("int single thread");
-//            }
-//        });
 //        newMultipleThreadExecutor.shutdown();
+
+        newMultipleThreadExecutor.execute(new Runnable() {
+
+            @Override
+            public void run() {
+                System.out.println("int single thread");
+            }
+        });
+        newMultipleThreadExecutor.shutdown();
 
     }
 }

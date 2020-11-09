@@ -14,7 +14,7 @@ public class FindOrder {
     output: [0, 1, 2]
      */
 
-    public int[] findOrder1(int[] A){
+    public int[] findOrder1(int[] A) {
         int a = A.length;
         int[] result = new int[a];
         int[] adjList = new int[a];

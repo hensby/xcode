@@ -6,10 +6,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ColleactionEx {
 
     public static void listImpl() {
-//        List<Integer> a = new ArrayList<>(); // Object array ds// allow duplicate
-//        Vector<Integer> a = new Vector<>(); //Resizeable array Data Structure
-        Stack<Integer> a = new Stack<>(); // LIFO synchronized class
-//        LinkedList<Integer> a = new LinkedList<>(); // double linked list
+//        ArrayList<Integer> a = new ArrayList<>(); // Object array ds// allow duplicate
+//        Vector<Integer> a = new Vector<>(); // Resizeable array Data Structure, synchronized class
+//        Stack<Integer> a = new Stack<>(); // LIFO synchronized class
+        LinkedList<Integer> a = new LinkedList<>(); // double linked list
         a.add(11);
         a.add(23);
         a.add(34);
@@ -26,13 +26,13 @@ public class ColleactionEx {
             System.out.println(it.next());
         }
         System.out.println(a);
-//        List li = Collections.unmodifiableList(a); // unmodifiable cannot modify
-//        li.add(222);
+        List li = Collections.unmodifiableList(a); // unmodifiable cannot modify
+        li.add(222);
     }
 
     public static void setImpl() {
 //        HashSet<Object> hs = new HashSet<>(); // don't have duplicate // disordered // hashtable ds
-        LinkedHashSet hs = new LinkedHashSet<>();
+        LinkedHashSet hs = new LinkedHashSet<>(); // ordered // linked list and hashtable ds
         hs.add(23);
         hs.add(22);
         hs.add(33);
@@ -58,22 +58,22 @@ public class ColleactionEx {
     }
 
     public static void mapEx() {
-//        HashMap hm = new HashMap(); // key cannot be duplicate // is unordered // hashtable DS
+        HashMap hm = new HashMap(); // key cannot be duplicate // is unordered // hashtable DS
 //        LinkedHashMap hm = new LinkedHashMap(); // in order // hashtable + LinkedList DS
-        ConcurrentHashMap hm = new ConcurrentHashMap(); // onetime, synchronized
+//        ConcurrentHashMap hm = new ConcurrentHashMap(); // onetime, synchronized
         hm.put(1, "whc");
         hm.put(2, "henry");
         hm.put(3, "rick");
         hm.put(new Person("tom"), "new person");
-        hm.put(null, "ddd");   // support
-        hm.remove(null);
+//        hm.put(null, "ddd");   // support
+//        hm.remove(null);
         System.out.println(hm);
 
         Set set = hm.keySet();
         Iterator it = set.iterator();
         while(it.hasNext()) {
             System.out.println(hm.get(it.next()));
-//            hm.put(1, "whc");
+            hm.put(99, "derrick");
         }
         Map map = Collections.synchronizedMap(hm);
         System.out.println(map);
@@ -94,6 +94,6 @@ public class ColleactionEx {
 //        treeSetImpl();
         mapEx();
 //        hashTableEx();
-        System.out.println("4321".hashCode());
+//        System.out.println("4321".hashCode());
     }
 }
