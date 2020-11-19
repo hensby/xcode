@@ -9,7 +9,11 @@ public class CalculatorThread2 extends Thread {
 
     @Override
     public void run() {
-        calculator.printRes(2);
+        try {
+            calculator.printRes(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

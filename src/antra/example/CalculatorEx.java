@@ -1,6 +1,6 @@
 package antra.example;
 
-public class CauculatorEx {
+public class CalculatorEx {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
         CalculatorThread1 c1 = new CalculatorThread1(calculator);

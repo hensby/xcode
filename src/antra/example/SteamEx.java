@@ -60,7 +60,7 @@ public class SteamEx {
         );
 
         List<Person> newPersonList = personList.stream().filter( (p) -> p.getSex().equals("M")).collect(Collectors.toList());
-        newPersonList.stream().forEach(i -> System.out.print(i + " "));
+        newPersonList.stream().forEach(i -> System.out.print(i.getName() + " "));
 
         System.out.println();
 
@@ -71,5 +71,4 @@ public class SteamEx {
         newPersonList.stream().forEach(i -> System.out.print(i + " "));
 
     }
-
 }

@@ -8,9 +8,7 @@ public class ThreadPriorityEx {
         Task2 t2 = new Task2();
         t2.setPriority(Thread.NORM_PRIORITY); // 5  MIN_PRIORITY == 1
 
-
         t1.start();
         t2.start();
     }
-
 }

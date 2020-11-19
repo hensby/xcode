@@ -65,7 +65,7 @@ public class ColleactionEx {
         hm.put(2, "henry");
         hm.put(3, "rick");
         hm.put(new Person("tom"), "new person");
-//        hm.put(null, "ddd");   // support
+        hm.put(null, "ddd");   // support
 //        hm.remove(null);
         System.out.println(hm);
 
@@ -73,7 +73,7 @@ public class ColleactionEx {
         Iterator it = set.iterator();
         while(it.hasNext()) {
             System.out.println(hm.get(it.next()));
-            hm.put(99, "derrick");
+//            hm.put(99, "derrick");
         }
         Map map = Collections.synchronizedMap(hm);
         System.out.println(map);

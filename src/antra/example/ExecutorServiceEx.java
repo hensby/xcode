@@ -17,13 +17,12 @@ public class ExecutorServiceEx {
         newSingleThreadExecutor.shutdown();
 
         ExecutorService newMultipleThreadExecutor = Executors.newScheduledThreadPool(3);
-
-
         List<Callable<String>> al=new ArrayList();
         for(int i = 1; i < 10; i++) {
             al.add(new Task3(i));
         }
-        newMultipleThreadExecutor.submit(new Task3(2));
+
+//        newMultipleThreadExecutor.submit(new Task3(2));
 
         List<Future<String>> invokeAll = newMultipleThreadExecutor.invokeAll(al);
         for(Future f:invokeAll) {
@@ -39,6 +38,5 @@ public class ExecutorServiceEx {
             }
         });
         newMultipleThreadExecutor.shutdown();
-
     }
 }
