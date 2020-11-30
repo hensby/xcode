@@ -21,6 +21,6 @@ public class CanPlaceFlowers {
         CanPlaceFlowers c = new CanPlaceFlowers();
         int[] input = new int[]{1,0,0,0,1};
         int n = 2;
-        c.canPlaceFlowers(input,2);
+        c.canPlaceFlowers(input,n);
     }
 }
