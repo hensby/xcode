@@ -24,8 +24,8 @@ public class MaxinumUnit {
     }
 
     public static void main(String[] args) {
-        ArrayList<Integer> boxes = new ArrayList<>(){{add(1); add(2); add(3);}};
-        ArrayList<Integer> unitsPerBox = new ArrayList<>(){{add(1); add(2); add(3);}};
+        ArrayList<Integer> boxes = new ArrayList<Integer>(){{add(1); add(2); add(3);}};
+        ArrayList<Integer> unitsPerBox = new ArrayList<Integer>(){{add(1); add(2); add(3);}};
         System.out.println(getMaxUnit(3, boxes,3, unitsPerBox,3));
     }
 }
