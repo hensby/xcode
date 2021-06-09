@@ -3,7 +3,7 @@ package Amazon_oa;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemnsInContainers {
+public class ItemsInContainers {
 
     public static List<Integer> numberOfItems(String s, List<Integer> startIndices, List<Integer> endIndices) {
         int[] mem = new int[s.length()];
