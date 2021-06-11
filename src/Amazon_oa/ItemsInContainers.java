@@ -1,34 +1,40 @@
 package Amazon_oa;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemsInContainers {
 
     public static List<Integer> numberOfItems(String s, List<Integer> startIndices, List<Integer> endIndices) {
-        int[] mem = new int[s.length()];
+        if (startIndices == null || endIndices == null || endIndices.size() != startIndices.size()) return null;
+        char[] sCharArray = s.toCharArray();
+        int[] starCountArray = new int[s.length()];
         int count = 0;
-        for (int i = 0; i < s.length(); ++i) {
-            if (s.charAt(i) == '|') {
-                mem[i] = count;
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (sCharArray[i] == '|') {
+                starCountArray[i] = count;
             } else {
-                ++count;
+                count++;
             }
         }
-        List<Integer> ans = new ArrayList<>();
-        for (int i = 0; i < startIndices.size(); ++i) {
+        System.out.println(Arrays.toString(starCountArray));
+        for (int i = 0; i < startIndices.size(); i++) {
             int start = startIndices.get(i) - 1;
             int end = endIndices.get(i) - 1;
-
-            while (start < end && s.charAt(start) != '|') ++start;
-            while (start < end && s.charAt(end) != '|') --end;
-
-            ans.add(mem[end] - mem[start]);
+            while (start < end && sCharArray[start] != '|') {
+                start++;
+            }
+            while (start < end && sCharArray[end] != '|') {
+                end--;
+            }
+            res.add(starCountArray[end] - starCountArray[start]);
         }
-        return ans;
+        return res;
     }
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         String s = "|**|*|*";
         List<Integer> startIndices = new ArrayList<Integer>(){{add(1);add(1);}};
         List<Integer> endIndices =  new ArrayList<Integer>(){{add(5);add(6);}};
