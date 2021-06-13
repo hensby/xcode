@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+// 小于target的最大的两个数和
 public class PrimeAirTime {
 
     private static List<int[]> getClosestPairs1(int[][] A, int[][] B, int target) {
