@@ -1,76 +1,80 @@
+package Amazon_onsite;
+
 import java.util.HashMap;
+import java.util.Map;
+
 public class LRUCache {
-    static class DLinkNode{
+
+    class LinkNode {
         int key;
-        int val;
-        DLinkNode prev;
-        DLinkNode next;
+        int value;
+        LinkNode next;
+        LinkNode prev;
     }
 
-    public void addNode (DLinkNode node) {
-        node.prev = head;
-        node.next = head.next;
-        head.next.prev = node;
-        head.next = node;
-    }
-
-    public void remove (DLinkNode node) {
-        DLinkNode nodePrev = node.prev;
-        DLinkNode nodeNext = node.next;
-        nodePrev.next = nodeNext;
-        nodeNext.prev = nodePrev;
-    }
-
-    public void moveToHead (DLinkNode node) {
-        remove(node);
-        addNode(node);
-    }
-
-    public DLinkNode removeTail () {
-        DLinkNode node = tail.prev;
-        remove(node);
-        return node;
-    }
-
-    int size = 0, capacity = 0;
-    private DLinkNode head, tail;
-    HashMap<Integer, DLinkNode> cache = new HashMap<Integer, DLinkNode>();
-
+    int capacity;
+    int size;
+    Map<Integer, LinkNode> cache = new HashMap<>();
+    LinkNode root;
+    LinkNode tail;
     public LRUCache(int capacity) {
         this.capacity = capacity;
         this.size = 0;
-        head = new DLinkNode();
-        tail = new DLinkNode();
-        head.next = tail;
-        tail.prev = head;
+        this.root = new LinkNode();
+        this.tail = new LinkNode();
+        root.next = tail;
+        tail.prev = root;
+    }
+
+    private void addToFront(LinkNode node) {
+        LinkNode nodeAfterRoot = root.next;
+        root.next = node;
+        nodeAfterRoot.prev = node;
+        node.prev = root;
+        node.next = nodeAfterRoot;
+    }
+
+    private void remove(LinkNode node) {
+        LinkNode nodeBefore = node.prev;
+        LinkNode nodeAfter = node.next;
+        nodeBefore.next = nodeAfter;
+        nodeAfter.prev = nodeBefore;
+    }
+
+    private void moveToFront(LinkNode node) {
+        remove(node);
+        addToFront(node);
     }
 
     public int get(int key) {
-        DLinkNode node = cache.get(key);
-        if (node == null) return -1;
-        moveToHead(node);
-        return node.val;
+        if (!cache.containsKey(key)) return -1;
+        LinkNode node = cache.get(key);
+        moveToFront(node);
+        return node.value;
     }
 
     public void put(int key, int value) {
-        DLinkNode node = cache.get(key);
-        if (node == null) {
-            DLinkNode newNode = new DLinkNode();
-            newNode.val = value;
-            newNode.key = key;
-            addNode(newNode);
-            cache.put(key, newNode);
-            size++;
-            if (size > capacity) {
-                DLinkNode tailNode = removeTail();
-                cache.remove(tailNode.key);
-                size--;
-            }
+        if (cache.containsKey(key)) {
+            LinkNode node = cache.get(key);
+            node.value = value;
+//            cache.put(key, node);
+            moveToFront(node);
         } else {
-            node.val = value;
-            moveToHead(node);
+            LinkNode node = new LinkNode();
+            node.key = key;
+            node.value = value;
+            cache.put(key, node);
+            addToFront(node);
+            if (size == capacity) {
+                LinkNode nodeBeforeTail = tail.prev;
+                remove(nodeBeforeTail);
+                cache.remove(nodeBeforeTail.key);
+            } else {
+                size++;
+            }
         }
     }
+
 
 
     public static void main(String[] args) {

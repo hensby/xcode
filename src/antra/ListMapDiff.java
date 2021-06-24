@@ -21,7 +21,7 @@ public class ListMapDiff {
 
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,4,10));
-        Map<String, String> map = new HashMap<>(){};
+        Map<String, String> map = new HashMap<String, String>(){};
         map.put("A", "1");
         map.put("B", "2");
         map.put("C", "10");
