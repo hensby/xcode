@@ -7,7 +7,7 @@ public class NextGreatestLetter {
         while (l <= h) {
 
             int m = l + (h - l) / 2;
-            System.out.println(l + " " + h + " " + m);
+            System.out.println(l + " " + h + " " + letters[m]);
             if (letters[m] <= target) {
                 l = m + 1;
             } else {

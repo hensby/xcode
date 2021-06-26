@@ -7,7 +7,7 @@ public class BinarySearchMatrix {
         int n = matrix[0].length;
         int l = 0, r = m * n - 1;
         while (l <= r) {
-            int mid = l + ((r - l) >>>1);
+            int mid = l + ((r - l) >>> 1);
             int tmp = matrix[mid / n][mid % n];
             System.out.println(mid);
             if (tmp == target) return true;
@@ -38,18 +38,35 @@ public class BinarySearchMatrix {
         return false;
     }
 
+    public boolean searchMatrix2(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0) return false;
+        int row = matrix.length, col = matrix[0].length;
+        int left = 0, right = col * row - 1;
+        while (left <= right) {
+            int mid = left + ((right - left) >>> 1);
+            int tmpValue = matrix[mid / col][mid % col];
+            System.out.println(tmpValue + "   " + mid / row + "   " + mid % row);
 
+            if (tmpValue == target) return true;
+            else if (tmpValue > target) right = mid - 1;
+            else left = mid + 1;
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         BinarySearchMatrix test123 = new BinarySearchMatrix();
-        int[][] a = new int[][] {
+        int[][] a = new int[][]{
                 {1, 3, 5, 7},
                 {10, 15, 16, 20},
                 {24, 26, 31, 40}
         };
-        System.out.println(test123.searchMatrix(a, 3));
+        System.out.println(test123.searchMatrix(a, 10));
+        System.out.println(test123.searchMatrix1(a, 19));
+        System.out.println(test123.searchMatrix2(a, 40));
     }
 }
+// 4. Search a 2D Matrix
 
 
 
