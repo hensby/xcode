@@ -1,7 +1,4 @@
-package binarySearch;
-
-import binaryTree.Node;
-import binaryTree.BinaryTree;
+package binaryTree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -108,7 +105,7 @@ public class BinaryTreeLevelOrderTraversal {
         nodes.add(19);
         nodes.add(-4);
         bt = bt.createBinaryTree(nodes);
-
+        bt.printBt(bt.root);
         System.out.println(binaryTreeLevelOrderTraversal.levelOrder(bt.root));
         System.out.println(binaryTreeLevelOrderTraversal.levelOrderBottom(bt.root));
         System.out.println(binaryTreeLevelOrderTraversal.levelOrder2(bt.root));

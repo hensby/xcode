@@ -3,64 +3,66 @@ package binarySearch;
 public class WoodCut {
     public int woodCut1(int[] L, int k) {
         int min = 0, max = 0;
-        for (int len: L) {
+        for (int len : L) {
             max = Math.max(len, max);
         }
-        while (min+1 < max) {
-            System.out.println(min + " " + max );
+        while (min + 1 < max) {
+            System.out.println(min + " " + max);
             int mid = min + ((max - min) >>> 1);
-            int numberMid = countNum(L, mid );
+            int numberMid = countNum(L, mid);
             if (numberMid >= k) {
-                min = mid;
-            }else {
-                max = mid;
-            }
-        }
-        System.out.println(min + " " + max );
-        return min;
-    }
-
-    public int countNum(int[] L, int mid) {
-        int count = 0;
-        for (int len: L) {
-            count += len / mid;
-        }
-        return count;
-    }
-
-    public int woodCut(int[] woods, int k) {
-        int min = 0, max = 0;
-        for (int i : woods) {
-            max = Math.max(i,max);
-        }
-
-        while(min + 1 < max) {
-            int mid = min + ((max - min) >>>1 );
-            if (countWoods(woods, mid) >= k) {
                 min = mid;
             } else {
                 max = mid;
             }
         }
+        System.out.println(min + " " + max);
         return min;
     }
 
-    public int countWoods(int[] woods, int woodLen) {
+    public int countNum(int[] L, int mid) {
         int count = 0;
-        for (int i : woods) {
-            count += i / woodLen;
+        for (int len : L) {
+            count += len / mid;
         }
         return count;
     }
 
+    public int woodCut2(int[] L, int k) {
+
+        if (L.length == 0 || k <= 0) return -1;
+        int left = 0, right = 0;
+        for (int l : L) {
+            right = Math.max(right, l);
+        }
+        while (left + 1 < right) {
+            int mid = left + ((right - left) >>> 1);
+            System.out.println(left + "  " + mid + "   " + right);
+
+            if (countNum1(L, mid) >= k) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
+    }
+
+    private int countNum1(int[] L, int length) {
+        int count = 0;
+        for (int l : L) {
+            count += l / length;
+        }
+        System.out.println(count);
+        return count;
+    }
 
     public static void main(String[] args) {
         WoodCut woodCut = new WoodCut();
         int[] s = new int[]{232, 124, 456};
-        System.out.println(woodCut.woodCut(s, 7));
+        System.out.println(woodCut.woodCut2(s, 7));
+        System.out.println(woodCut.woodCut1(s, 7));
     }
-
-
 }
 /**
  * Wood Cut Given n pieces of wood with length L[i] (integer array). Cut

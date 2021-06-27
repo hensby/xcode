@@ -16,7 +16,7 @@ public class BoundaryOfBinaryTree {
     }
 
     private void left_bound(Node root, List<Integer> res) {
-        if (root == null || (root.left == null && root.right == null)) return;
+        if(root == null || (root.left == null && root.right == null)) return;
         res.add(root.data);
         if (root.left == null) left_bound(root.right, res);
         else left_bound(root.left, res);
@@ -40,16 +40,16 @@ public class BoundaryOfBinaryTree {
     public static void main(String[] args) {
         BinaryTree bt = new BinaryTree();
         ArrayList nodes = new ArrayList();
-        nodes.add(1);
-        nodes.add(2);
-        nodes.add(3);
-        nodes.add(4);
         nodes.add(5);
-        nodes.add(6);
         nodes.add(7);
-        nodes.add(8);
+        nodes.add(3);
+        nodes.add(2);
+        nodes.add(4);
         nodes.add(9);
-        nodes.add(10);
+        nodes.add(6);
+        nodes.add(8);
+        nodes.add(20);
+        nodes.add(1);
 
         System.out.println(nodes);
         bt = bt.createBinaryTree(nodes);
