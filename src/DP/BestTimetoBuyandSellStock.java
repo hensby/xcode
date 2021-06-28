@@ -1,6 +1,7 @@
 package DP;
 
 import java.util.Arrays;
+
 // 714
 public class BestTimetoBuyandSellStock {
     public int maxProfit(int[] prices) {
@@ -41,11 +42,26 @@ public class BestTimetoBuyandSellStock {
         return dp[len - 1][0];
     }
 
+    public int maxProfit2(int[] prices, int fee) {
+        int len = prices.length;
+        if (len < 2) return 0;
+        int[][] dp = new int[len][2];
+        dp[0][0] = 0;
+        dp[0][1] = prices[0] * -1 - fee;
+        for (int i = 1; i < len; i++) {
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+            dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i] - fee);
+        }
+        return dp[len - 1][0];
+    }
+
     public static void main(String[] args) {
-        int[] stocks = new int[] {1, 7, 5, 3, 6, 4};
-        int[] input = new int[] {1, 3, 2, 8, 4, 9};
+        int[] stocks = new int[]{1, 7, 5, 3, 6, 4};
+        int[] input = new int[]{1, 3, 2, 8, 4, 9};
         BestTimetoBuyandSellStock stock = new BestTimetoBuyandSellStock();
         System.out.println(stock.maxProfit1(input, 2));
+        System.out.println(stock.maxProfit1(stocks, 2));
+        System.out.println(stock.maxProfit2(stocks, 2));
     }
 }
 //  [7,1,5,3,6,4]
