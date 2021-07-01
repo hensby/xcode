@@ -14,8 +14,8 @@ public class MeetingTimeEA {
         int i = 0, j = 0;
         while (i < len1 && j < len2) {          // double pointer
             System.out.println(i + " " + j);
-            if (slot1[i][0] < slot2[j][0] && slot1[i][1] < slot2[j][1]) i++;
-            else if (slot1[i][0] > slot2[j][0] && slot1[i][1] < slot2[j][1]) j++;
+            if (slot1[i][1] < slot2[j][0]) i++;
+            else if (slot2[j][0] > slot2[j][1]) j++;
             else {
                 int left = Math.max(slot1[i][0], slot2[j][0]), right = Math.min(slot1[i][1], slot2[j][1]);
                 if (right - left >= duration) {
@@ -50,8 +50,55 @@ public class MeetingTimeEA {
         int[][] slot2 = new int[][] {{2, 19},{20, 30}};
         int duration = 2;
         MeetingTimeEA m = new MeetingTimeEA();
-        System.out.println(Arrays.toString(m.isAvailable(slot1, slot2, duration)));
+        System.out.println(Arrays.toString(m.isAvailable1(slot1, slot2, duration)));
     }
+
+    public int[] isAvailable1(int[][] slot1, int[][] slot2, int duration) {
+        if (slot1.length == 0 || slot2.length == 0 || duration == 0) return new int[2];
+        slot1 = margeSlot(slot1);
+        slot2 = margeSlot(slot2);
+        System.out.println(Arrays.deepToString(slot1));
+        System.out.println(Arrays.deepToString(slot2));
+        int index1 = 0, index2 = 0;
+        while (index1 < slot1.length && index2 < slot2.length) {
+            if (slot1[index1][1] <= slot2[index2][0]) index1++;
+            else if (slot1[index1][0] >= slot2[index2][1]) index2++;
+            else {
+                int start = Math.max(slot1[index1][0], slot2[index2][0]);
+                int end = Math.min(slot1[index1][1], slot2[index2][1]);
+                if (end - start >= duration) {
+                    return new int[] {start, start + duration};
+                }
+                index1++;
+                index2++;
+            }
+        }
+        return null;
+    }
+
+    public int[][] margeSlot(int[][] slot) {
+        int len = slot.length;
+        if (len < 2) return slot;
+        List<int[]> res = new ArrayList<int[]>();
+        Arrays.sort(slot, (s1, s2) -> s1[0] - s2[0]);
+        int index = 0;
+        while (index < slot.length) {
+            int start = slot[index][0], end = slot[index][1];
+            while (index < len - 1 && slot[index + 1][0] <= end) {
+                end = Math.max(end, slot[index + 1][1]);
+                index++;
+            }
+            res.add(new int[]{start, end});
+            index++;
+        }
+        return res.toArray(new int[0][2]);
+    }
+
+
+
+
+
+
 }
 
 //

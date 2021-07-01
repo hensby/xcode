@@ -5,13 +5,9 @@ import java.util.Comparator;
 
 public class MeetingRoom {
     public boolean canAttendMeetings(int[][] intervals) {
-        Arrays.sort(intervals, new Comparator<int[]>() {
-            public int compare(int[] a, int[] b) {
-                if(a[0] != b[0]) return a[0] - b[0];
-                return a[1] - b[1];
-            }
-        });
+        Arrays.sort(intervals, (i1, i2) -> i1[0] - i2[0]);
         for(int i = 1; i < intervals.length; ++i) {
+            System.out.println(Arrays.toString(intervals[i]) + " + " + Arrays.toString(intervals[i - 1]));
             if(intervals[i][0] < intervals[i-1][1]) {
                 return false;
             }
@@ -23,6 +19,10 @@ public class MeetingRoom {
         MeetingRoom meeting = new MeetingRoom();
         int[][] input = new int[][] {{0, 30},{5, 10},{15, 20}};
         System.out.println(meeting.canAttendMeetings(input));
+
+        int[][] input1 = new int[][] {{0, 5},{5, 10},{15, 20},{25, 35}};
+        System.out.println(meeting.canAttendMeetings(input1));
+
     }
 }
 //    leetcode 252

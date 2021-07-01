@@ -41,11 +41,32 @@ public class MeetingRoomsII {
         return pq.size();
     }
 
-    public static void main(String[] args) {
+    public int minMeetingRooms2(Interval[] intervals) {
+
+        Arrays.sort(intervals, (i1, i2) -> i1.start - i2.start);
+        PriorityQueue<Interval> pq = new PriorityQueue<Interval>((i1, i2) -> i1.end - i2.end);
+        pq.add(intervals[0]);
+        for (int i = 1; i < intervals.length; i++) {
+            Interval endInterval = pq.peek();
+            if (intervals[i].start >= endInterval.end) {
+                pq.poll();
+            }
+            pq.add(intervals[i]);
+        }
+        return pq.size();
+    }
+
+        public static void main(String[] args) {
         MeetingRoomsII meetingRoomsII = new MeetingRoomsII();
         Interval[] intervals = {new Interval(1,10),new Interval(11, 20), new Interval(15, 30), new Interval(25, 40)};
-//        Interval[] intervals = {new Interval(0,30),new Interval(5, 10), new Interval(15, 20)};
+        Interval[] intervals1 = {new Interval(0,30),new Interval(5, 10), new Interval(15, 20)};
         System.out.println(meetingRoomsII.minMeetingRooms(intervals));
+        System.out.println(meetingRoomsII.minMeetingRooms(intervals1));
+
+        Interval[] intervals2 = {new Interval(0,3),new Interval(5, 10), new Interval(15, 20)};
+        System.out.println(meetingRoomsII.minMeetingRooms1(intervals2));
+
+
     }
 }
 //        [LeetCode] 253. Meeting Rooms II 会议室之二
