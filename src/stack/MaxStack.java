@@ -70,6 +70,8 @@ public class MaxStack {
         System.out.println(maxStack);
     }
 
+
+
     public static void main(String[] args) {
         MaxStack stack = new MaxStack();
         stack.push(5);
@@ -93,7 +95,6 @@ public class MaxStack {
 //
 //        [leetcode]716. Max Stack 最大栈
 //        Design a max stack that supports push, pop, top, peekMax and popMax.
-//
 //
 //
 //        push(x) -- Push element x onto stack.

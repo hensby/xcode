@@ -56,7 +56,7 @@ public class FindAllAnagramsString {
         int right = 0; // 右指针
         int valid = p.length(); // 只有当 valid == 0 时，才说明 window 中包含了目标子串
         while (right < s.length()) {
-            System.out.println(window);
+//            System.out.println(window);
             // 如果目标子串中包含了该字符，才存入 window 中
             if (map.containsKey(s.charAt(right))) {
                 window.put(s.charAt(right), window.getOrDefault(s.charAt(right), 0) + 1);
@@ -78,6 +78,8 @@ public class FindAllAnagramsString {
                         valid++;
                     }
                 }
+                System.out.println(window + " " + valid);
+
                 left++;
             }
             right++;
