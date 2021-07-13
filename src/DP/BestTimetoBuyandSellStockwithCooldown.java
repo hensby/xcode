@@ -21,7 +21,7 @@ public class BestTimetoBuyandSellStockwithCooldown {
     public static void main(String[] args) {
         int[] stocks = new int[]{1, 7, 5, 3, 6, 4};
         int[] input = new int[]{1, 3, 2, 8, 4, 9};
-        BestTimetoBuyandSellStock stock = new BestTimetoBuyandSellStock();
+        BestTimetoBuyandSellStockWithFee stock = new BestTimetoBuyandSellStockWithFee();
         System.out.println(stock.maxProfit1(input, 2));
         System.out.println(stock.maxProfit1(stocks, 2));
         System.out.println(stock.maxProfit2(stocks, 2));
