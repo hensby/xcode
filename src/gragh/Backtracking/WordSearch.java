@@ -1,4 +1,4 @@
-package gragh;
+package gragh.Backtracking;
 
 import java.util.Arrays;
 
