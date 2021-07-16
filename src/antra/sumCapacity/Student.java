@@ -21,6 +21,14 @@ public class Student {
         }
     }
 
+    public String getStu_name() {
+        return stu_name;
+    }
+
+    public void setStu_name(String stu_name) {
+        this.stu_name = stu_name;
+    }
+
     public List<Laptop> getLaptopList() {
         return laptopList;
     }
