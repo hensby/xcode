@@ -46,7 +46,7 @@ public class CombinationSumII {
     }
 
     public static void main(String[] args) {
-        int[] candidates = new int[] {10,1,2,7,6,1,5};
+        int[] candidates = new int[] {10,1,2,7,6,1,5}; // 1,1,2,5,6,7,10
         int target = 8;
         CombinationSumII C = new CombinationSumII();
         System.out.println(C.combinationSum2(candidates, target));

@@ -25,6 +25,7 @@ public class MinimumNumberofArrowstoBurstBalloons {
         int len = points.length;
         if (len == 1) return 1;
         Arrays.sort(points, Comparator.comparingInt(o -> o[1]));
+        System.out.println(Arrays.deepToString(points));
         int end = points[0][1], arrows = 1;
         for (int i = 1; i < len; i++) {
             if (points[i][0] <= end) continue;

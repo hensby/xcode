@@ -50,7 +50,7 @@ public class FindKLengthSubstringsWithNoRepeatedCharacters {
         String S = "havefunonleetcode";
         int K = 5;
         FindKLengthSubstringsWithNoRepeatedCharacters f = new FindKLengthSubstringsWithNoRepeatedCharacters();
-        System.out.println(f.numKLenSubstrNoRepeats(S, K));
+        System.out.println(f.numKLenSubstrNoRepeats1(S, K));
     }
 }
 

@@ -85,12 +85,13 @@ public class WordLadder {
                 wordCharArray[i] = tmpChar;
             }
         }
+        System.out.println("wordSet" + wordSet);
         return res;
     }
 
     public static void main(String[] args) {
         String beginWord = "hit", endWord = "cog";
-        List<String> wordList = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
+        List<String> wordList = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog", "hmt");
         WordLadder wordLadder = new WordLadder();
         System.out.println(wordLadder.ladderLength(beginWord,endWord,wordList));
         System.out.println(wordLadder.ladderLength1(beginWord,endWord,wordList));

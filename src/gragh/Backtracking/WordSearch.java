@@ -40,11 +40,59 @@ public class WordSearch {
         return false;
     }
 
+
+    char[][] board;
+    int row, col;
+    String word;
+    int[][] directions = new int[][] {{1,0}, {-1,0}, {0,1}, {0,-1}};
+
+    public boolean exist1(char[][] board, String word) {
+        if (word == null || word.equals("")) return true;
+        if (board == null || board.length == 0) return false;
+
+        this.board = board;
+        this.row = board.length;
+        this.col = board[0].length;
+        this.word = word;
+
+        for (int r = 0; r < row; r++) {
+            for (int c = 0; c < col; c++) {
+                if (board[r][c] == word.charAt(0)) {
+                    boolean[][] isVisit = new boolean[row][col];
+                    isVisit[r][c] = true;
+                    if (dfs1(r,c,isVisit,1)) return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean dfs1(int r, int c, boolean[][] isVisit, int index) {
+        System.out.println("x " + r + " y " + c);
+
+        if (index == word.length()) return true;
+        for(int[] direction: directions) {
+            int tmpRow = r + direction[0];
+            int tmpCol = c + direction[1];
+
+            if (isValid(tmpRow,tmpCol) && !isVisit[tmpRow][tmpCol] && board[tmpRow][tmpCol] == word.charAt(index)) {
+                isVisit[tmpRow][tmpCol] = true;
+                if (dfs1(tmpRow, tmpCol, isVisit, index + 1)) return true;
+                isVisit[tmpRow][tmpCol] = false;
+            }
+        }
+        return false;
+    }
+
+    public boolean isValid(int r, int c) {
+        return r >= 0 && r < row && c >= 0 && c < col;
+    }
+
     public static void main(String[] args) {
         WordSearch wordSearch = new WordSearch();
         char[][] input = new char[][] {
                 {'A', 'B', 'C', 'E'},
-                {'S', 'F', 'E', 'S'},
+                {'S', 'F', 'C', 'S'},
                 {'A', 'D', 'E', 'E'}
         };
 //        char[][] input = new char[][] {
@@ -52,7 +100,7 @@ public class WordSearch {
 //                {'A', 'A', 'A'},
 //                {'B', 'C', 'D'}
 //        };
-        String word = "ABCESEEEFS";
-        System.out.println(wordSearch.exist(input, word));
+        String word = "ABCCED";
+        System.out.println(wordSearch.exist1(input, word));
     }
 }

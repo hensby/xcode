@@ -10,9 +10,15 @@ public class QueueReconstructionbyHeight {
             return new int[0][0];
         }
         Arrays.sort(people, (a, b) -> (a[0] == b[0] ? a[1] - b[1] : b[0] - a[0]));
+        System.out.println(Arrays.deepToString(people));
         List<int[]> queue = new ArrayList<>();
         for (int[] p : people) {
             queue.add(p[1], p);
+            for (int[] i: queue) {
+                System.out.print(Arrays.toString(i) + "   ");
+            }
+            System.out.println();
+
         }
         return queue.toArray(new int[queue.size()][]);
     }
