@@ -6,9 +6,9 @@ import java.util.List;
 
 public class MergeInterval {
     public int[][] merge(int[][] intervals) {
-        if (intervals.length <= 1 || intervals == null) return intervals;
+        if (intervals == null || intervals.length <= 1 ) return intervals;
         Arrays.sort(intervals, (l1, l2)->l1[0] - l2[0]);
-        // System.out.println(Arrays.toString(intervals));
+         System.out.println(Arrays.deepToString(intervals));
         List<int[]> res = new ArrayList<int[]>();
         int len = intervals.length;
         int i = 0;

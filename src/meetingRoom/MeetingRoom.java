@@ -7,7 +7,7 @@ public class MeetingRoom {
     public boolean canAttendMeetings(int[][] intervals) {
         Arrays.sort(intervals, (i1, i2) -> i1[0] - i2[0]);
         for(int i = 1; i < intervals.length; ++i) {
-            System.out.println(Arrays.toString(intervals[i]) + " + " + Arrays.toString(intervals[i - 1]));
+            System.out.println(Arrays.toString(intervals[i - 1]) + " + " + Arrays.toString(intervals[i]));
             if(intervals[i][0] < intervals[i-1][1]) {
                 return false;
             }

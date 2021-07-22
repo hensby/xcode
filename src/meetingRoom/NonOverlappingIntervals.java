@@ -7,6 +7,7 @@ public class NonOverlappingIntervals {
         int len = intervals.length;
         if(len <= 1) return 0;
         Arrays.sort(intervals, (i1, i2) -> i1[1] - i2[1]);
+        System.out.println(Arrays.deepToString(intervals));
         int end = intervals[0][1], count = 1;
         for(int i = 1; i < len; i++) {
             if(intervals[i][0] < end) continue;
