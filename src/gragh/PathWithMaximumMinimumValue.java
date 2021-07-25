@@ -22,11 +22,12 @@ public class PathWithMaximumMinimumValue {
             for(int[] dir : dirs) {
                 int x = dir[0] + tmp[1];
                 int y = dir[1] + tmp[2];
-                // System.out.println("can" + " " + x + " " + y);
+                 System.out.println("can" + " " + x + " " + y);
                 if(x < 0 || x >= m || y < 0 || y >= n || visited[x][y]) continue;
-                // System.out.println("add" + A[x][y] + " " + x + " " + y);
+                 System.out.println("add" + A[x][y] + " " + x + " " + y);
                 queue.add(new int[]{A[x][y], x, y});
                 visited[x][y] = true;
+                System.out.println(res);
             }
         }
         return res;

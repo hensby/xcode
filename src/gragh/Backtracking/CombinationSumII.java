@@ -25,6 +25,7 @@ public class CombinationSumII {
     }
 
     public void dfs(List<Integer> tmpRes, boolean[] isVisit, int tmpSum, int start) {
+        System.out.println(Arrays.toString(isVisit));
         if (tmpSum == target) {
             res.add(new ArrayList<>(tmpRes));
             return;
