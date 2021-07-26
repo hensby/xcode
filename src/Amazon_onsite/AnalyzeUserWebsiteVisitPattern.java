@@ -88,6 +88,8 @@ public class AnalyzeUserWebsiteVisitPattern {
     }
 }
 //LeetCode 1152. Analyze User Website Visit Pattern
+
+//https://www.cnblogs.com/slowbirdoflsh/p/11349461.html
 //        原题链接在这里：https://leetcode.com/problems/analyze-user-website-visit-pattern/
 //
 //        题目：
