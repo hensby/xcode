@@ -2,39 +2,82 @@ package gragh;
 
 public class Maze {
 
-    int[][] dict = new int[][] {{0,1}, {0, -1}, {-1, 0}, {1, 0}};
+    int[][] dict = new int[][]{{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+
     public boolean hasPath(int[][] maze, int[] start, int[] destination) {
         int m = maze.length, n = maze[0].length;
         if (m == 0 && n == 0 && maze == null) return false;
-        boolean [][] visited = new boolean[m][n];
+        boolean[][] visited = new boolean[m][n];
         visited[start[0]][start[1]] = true;
-        for(int[] tmp: dict) {
+        for (int[] tmp : dict) {
             if (dfs(maze, start, destination, tmp, visited)) return true;
         }
         return false;
     }
 
-    public boolean dfs(int[][] maze, int[] start, int[] destination, int[] tmp, boolean[][] visited){
+    public boolean dfs(int[][] maze, int[] start, int[] destination, int[] tmp, boolean[][] visited) {
         if (destination[0] == start[0] && destination[1] == start[1]) return true;
         int m = maze.length, n = maze[0].length;
         int x = start[0];
         int y = start[1];
-        while( x + tmp[0] > 0 && x + tmp[0] < m && y + tmp[1] > 0 && y + tmp[1] < n && maze[x + tmp[0]][y + tmp[1]] == 0 ) {
+        while (x + tmp[0] > 0 && x + tmp[0] < m && y + tmp[1] > 0 && y + tmp[1] < n && maze[x + tmp[0]][y + tmp[1]] == 0) {
             x += tmp[0];
             y += tmp[1];
         }
-        if(visited[x][y]){
+        if (visited[x][y]) {
             return false;
         }
         visited[x][y] = true;
-        for(int[] nextDir : dict){
-            if(dfs(maze, new int[]{x, y}, destination, nextDir, visited)){
+        for (int[] nextDir : dict) {
+            if (dfs(maze, new int[]{x, y}, destination, nextDir, visited)) {
                 return true;
             }
         }
         return false;
     }
 
+    int[][] directions = new int[][]{{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+    int[][] maze;
+    int row, col;
+    int[] destination;
+
+    public boolean hasPath1(int[][] maze, int[] start, int[] destination) {
+        if (maze == null || maze.length == 0) return true;
+        if (start[0] == destination[0] && start[1] == destination[1]) return true;
+        this.maze = maze;
+        this.row = maze.length;
+        this.col = maze[0].length;
+        this.destination = destination;
+        boolean[][] isVisit = new boolean[row][col];
+        isVisit[start[0]][start[1]] = true;
+        for (int[] direction : directions) {
+            if (dfs1(start[0], start[1], direction, isVisit)) return true;
+        }
+        return false;
+    }
+
+    public boolean dfs1(int r, int c, int[] direction, boolean[][] isVisit) {
+        if (destination[0] == r && destination[1] == c) return true;
+        System.out.println("before" + r + " " + c);
+        while (isValid(r + direction[0], c + direction[1]) && maze[r + direction[0]][c + direction[1]] == 0) {
+            r += direction[0];
+            c += direction[1];
+        }
+        System.out.println("after" + r + " " + c);
+
+        if (isVisit[r][c]) {
+            return false;
+        }
+        isVisit[r][c] = true;
+        for (int[] dict : directions) {
+            if (dfs1(r, c, dict, isVisit)) return true;
+        }
+        return false;
+    }
+
+    public boolean isValid(int r, int c) {
+        return r >= 0 && r < row && c >= 0 && c < col;
+    }
 
     public static void main(String[] args) {
         int[][] maze = new int[][]{
@@ -45,7 +88,7 @@ public class Maze {
                 {0, 0, 0, 0, 0}
         };
         Maze m = new Maze();
-        System.out.println(m.hasPath(maze, new int[]{0, 4},new int[]{4, 4}));
+        System.out.println(m.hasPath1(maze, new int[]{0, 4}, new int[]{4, 4}));
     }
 }
 //   LeetCode 490. The Maze
