@@ -172,8 +172,11 @@ public class WaterandJugProblem {
 //        int x = 1;
 //        int y = 2;
 //        int z = 3;
-        boolean res = water.canMeasureWater(x, y, z);
-        System.out.println(res);
+//        boolean res = water.canMeasureWater(x, y, z);
+//        System.out.println(res);
+        List<String> str = Arrays.asList("1", "2", "3");
+        System.out.println("syttostrin: "+str.toString());
+        System.out.println("stream.tostring: "+str.stream().toString());
     }
 }
 
