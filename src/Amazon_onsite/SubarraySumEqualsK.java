@@ -1,7 +1,9 @@
+package Amazon_onsite;
+
 import java.util.HashMap;
 
 public class SubarraySumEqualsK {
-
+//前缀和
     public int subarraySum(int[] nums, int k) {
         int count = 0, sum = 0;
         HashMap< Integer, Integer > map = new HashMap < > ();
