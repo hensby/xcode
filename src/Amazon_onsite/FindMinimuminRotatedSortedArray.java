@@ -1,4 +1,4 @@
-package binarySearch;
+package Amazon_onsite;
 
 public class FindMinimuminRotatedSortedArray {
 
