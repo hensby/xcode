@@ -103,6 +103,7 @@ public class WordLadder {
 // getNeighber()
 // bfs
 
+// O(Length of begin word * length of WordList)
 //127. Word Ladder
 //        A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
 //
