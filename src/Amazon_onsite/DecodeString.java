@@ -29,11 +29,45 @@ public class DecodeString {
         return res.toString();
     }
 
+    public static String decodeString1(String s) {
+        LinkedList<String> resStack = new LinkedList<String>();
+        LinkedList<Integer> multiStack = new LinkedList<Integer>();
+        StringBuilder res = new StringBuilder();
+        int multiplier = 0;
+        for (char c: s.toCharArray()) {
+            System.out.println(resStack);
+            System.out.println(multiStack);
+            System.out.println(res);
+            System.out.println(multiplier);
+            if (c == '[') {
+                multiStack.add(multiplier);
+                multiplier = 0;
+                resStack.add(res.toString());
+                res = new StringBuilder();
+            } else if (c == ']') {
+                int curMultipler = multiStack.poll();
+                StringBuilder tmpSb = new StringBuilder();
+                while(curMultipler-- > 0) {
+                    tmpSb.append(res);
+                }
+                res = new StringBuilder(resStack.poll() + tmpSb);
+            } else if (c >= '0' && c <= '9') {
+                multiplier = multiplier * 10 + Integer.parseInt(c + "");
+            } else {
+                res.append(c);
+            }
+        }
+        return res.toString();
+    }
+
     public static void main(String[] args) {
-        System.out.println(decodeString("3[a2[c]]"));
+//        System.out.println(decodeString("3[a2[cc3[bb]]]"));
+        System.out.println(decodeString1("3[a2[cc3[bb]]]"));
     }
 
 }
+//  时间复杂度 O(N)O(N)，一次遍历 s；
+//  空间复杂度 O(N)O(N)，辅助栈在极端情况下需要线性空间，例如 2[2[2[a]]]。
 //394. Decode String
 //        Given an encoded string, return its decoded string.
 //
