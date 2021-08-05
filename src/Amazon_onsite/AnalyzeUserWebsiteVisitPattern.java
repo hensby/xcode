@@ -39,7 +39,7 @@ public class AnalyzeUserWebsiteVisitPattern {
         System.out.println(behaviors);
 
         for (String key: behaviors.keySet()) {
-            behaviors.get(key).sort((v1, v2) -> v1.timestamp - v2.timestamp);
+            behaviors.get(key).sort((v1, v2) -> v1.timestamp - v2.timestamp); // todo important
             boolean[] isVisit = new boolean[behaviors.get(key).size()];
             dfs(0, isVisit, behaviors.get(key), new ArrayList<>());
         }

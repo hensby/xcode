@@ -26,6 +26,28 @@ public class KthSmallest {
         return q.poll().val;
     }
 
+    public int kthSmallest3(int[][] matrix, int k) {
+        // 大顶堆，堆k个元素
+        PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
+        // 遍历矩阵，当堆未满时，直接入堆；当堆满时，大于等于堆顶直接丢弃，比堆小时，删除堆顶元素后入堆，最后遍历完堆顶元素即为第k小元素
+        for (int[] row : matrix) {
+            for (int num : row) {
+                if (q.size() == k) {
+                    if (num < q.peek()) {
+                        q.poll();
+                        q.offer(num);
+                    }
+                } else {
+                    q.offer(num);
+                }
+            }
+        }
+
+        return q.peek();
+
+    }
+
+
     class MatrixTuple implements Comparable<MatrixTuple> {
         int x, y, val;
 
