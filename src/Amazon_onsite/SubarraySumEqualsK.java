@@ -41,3 +41,6 @@ public class SubarraySumEqualsK {
 //        1 <= nums.length <= 2 * 104
 //        -1000 <= nums[i] <= 1000
 //        -107 <= k <= 107
+
+//      3,4,7,2,-3,1,4,2
+//      3,7,14,16,13,14,18,20

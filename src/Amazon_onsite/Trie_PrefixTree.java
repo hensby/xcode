@@ -1,7 +1,7 @@
 package Amazon_onsite;
 
 
-class Trie {
+class Trie_PrefixTree {
     static class TrieNode{
         final int ALPHABET_SIZE = 26;
         TrieNode[] children = new TrieNode[ALPHABET_SIZE];
@@ -9,7 +9,7 @@ class Trie {
     }
 
     TrieNode root;
-    public Trie() {
+    public Trie_PrefixTree() {
         root = new TrieNode();
     }
     public void insert(String word) {
@@ -46,7 +46,7 @@ class Trie {
     }
 
     public static void main(String[] args) {
-        Trie trie = new Trie();
+        Trie_PrefixTree trie = new Trie_PrefixTree();
 
         trie.insert("apple");
         System.out.println(trie.search("apple"));   // returns true

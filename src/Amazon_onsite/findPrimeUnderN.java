@@ -33,5 +33,6 @@ public class findPrimeUnderN {
         System.out.println(findPrimeUnderN(120));
     }
 }
+//
 // gived positive integer n. find all primes less than n;
 // 14-> [2,3,5,7,11,13]

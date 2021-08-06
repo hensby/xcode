@@ -16,7 +16,6 @@ public class FindPhrasesFromSentence {
             TireNode cur = root;
             String[] sSubList = phrase.split(" ");
             for (String tmpS: sSubList) {
-
                 if (!cur.children.containsKey(tmpS)) {
                     cur.children.put(tmpS, new TireNode());
                 }
@@ -39,7 +38,7 @@ public class FindPhrasesFromSentence {
                         res.add(sb.toString());
                     }
                     cur = cur.children.get(sList[j]);
-                }
+                } else break;
             }
         }
         return new ArrayList<>(res);

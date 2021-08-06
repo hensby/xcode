@@ -36,7 +36,6 @@ public class Pow {
         return ans;
     }
 
-
     public static void main(String[] args) {
         double x = 2.00000;
         int n = 10;

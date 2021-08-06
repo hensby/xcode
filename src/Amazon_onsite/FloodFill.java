@@ -42,6 +42,8 @@ public class FloodFill {
     }
 
 }
+//时间复杂度：O(n\times m)O(n×m)，其中 nn 和 mm 分别是二维数组的行数和列数。最坏情况下需要遍历所有的方格一次。
+//空间复杂度：O(n\times m)O(n×m)，其中 nn 和 mm 分别是二维数组的行数和列数。主要为栈空间的开销。
 //733. Flood Fill
 //        An image is represented by an m x n integer grid image where image[i][j] represents the pixel value of the image.
 //

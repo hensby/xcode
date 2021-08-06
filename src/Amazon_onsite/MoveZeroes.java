@@ -27,12 +27,10 @@ public class MoveZeroes {
 }
 //时间复杂度：O(n)O(n)，其中 nn 为序列长度。每个位置至多被遍历两次。
 //空间复杂度：O(1)O(1)。只需要常数的空间存放若干变量。
-//283. Move Zeroes
+//        283. Move Zeroes
 //        Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 //
 //        Note that you must do this in-place without making a copy of the array.
-//
-//
 //
 //        Example 1:
 //
@@ -42,7 +40,6 @@ public class MoveZeroes {
 //
 //        Input: nums = [0]
 //        Output: [0]
-//
 //
 //        Constraints:
 //
