@@ -4,30 +4,36 @@ public class MaxAreaofIsland {
 
     int[][] grid;
     int row, col;
-    int[][] directions = new int[][] {{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
+    int[][] directions = new int[][] {{0,1}, {0,-1}, {1,0}, {-1,0}};
+
     public int maxAreaOfIsland(int[][] grid) {
-        if (grid == null || grid.length == 0) return 0;
+        if (grid.length == 0) return 0;
         this.grid = grid;
         this.row = grid.length;
         this.col = grid[0].length;
-        int maxArea = 0;
+        int max = 0;
         for (int r = 0; r < row; r++) {
             for (int c = 0; c < col; c++) {
-                maxArea = Math.max(maxArea, dfs(r,c));
+                if (grid[r][c] == 1) {
+                    max = Math.max(max, dfs(r,c));
+                }
             }
         }
-        return maxArea;
+        return max;
     }
-    public int dfs (int r, int c) {
-        if (r < 0 || r >= row || c < 0 || c >= col || grid[r][c] == 0) {
-            return 0;
-        }
-        int ans = 1;
+
+    public int dfs(int r, int c) {
+        if (!isValid(r,c) || grid[r][c] == 0) return 0;
         grid[r][c] = 0;
-        for (int[] direct: directions) {
-            ans += dfs(direct[0] + r, direct[1] + c);
+        int ans = 1;
+        for (int[] direction: directions) {
+            ans += dfs(r + direction[0], c + direction[1]);
         }
         return ans;
+    }
+
+    public boolean isValid(int r, int c) {
+        return r >= 0 && r < row && c >= 0 && c < col;
     }
 
     public static void main(String[] args) {
