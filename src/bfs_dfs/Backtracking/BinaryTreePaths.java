@@ -56,8 +56,14 @@ public class BinaryTreePaths {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
         TreeNode(int val, TreeNode left, TreeNode right) {
             this.val = val;
             this.left = left;
@@ -65,3 +71,29 @@ public class BinaryTreePaths {
         }
     }
 }
+//         时间复杂度：O(N^2)其中 NN 表示节点数目。在深度优先搜索中每个节点会被访问一次且只会被访问一次，每一次会对 path 变量进行拷贝构造，时间代价为 O(N)O(N)，故时间复杂度为 O(N^2)
+//
+//         空间复杂度：O(N^2)其中 NN 表示节点数目。除答案数组外我们需要考虑递归调用的栈空间。在最坏情况下，当二叉树中每个节点只有一个孩子节点时，即整棵二叉树呈一个链状，此时递归的层数为 NN，此时每一层的 path 变量的空间代价的总和为 O(N^2)
+//)        空间复杂度为 O(N^2)O(N)。最好情况下，当二叉树为平衡二叉树时，它的高度为 \log NlogN，此时空间复杂度为 O((\log{N})^2)
+//257. Binary Tree Paths
+//        Given the root of a binary tree, return all root-to-leaf paths in any order.
+//
+//        A leaf is a node with no children.
+//
+//
+//
+//        Example 1:
+//
+//
+//        Input: root = [1,2,3,null,5]
+//        Output: ["1->2->5","1->3"]
+//        Example 2:
+//
+//        Input: root = [1]
+//        Output: ["1"]
+//
+//
+//        Constraints:
+//
+//        The number of nodes in the tree is in the range [1, 100].
+//        -100 <= Node.val <= 100

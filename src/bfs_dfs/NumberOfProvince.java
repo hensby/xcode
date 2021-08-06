@@ -6,7 +6,8 @@ public class NumberOfProvince {
     boolean[] isVisit;
 
     public int findCircleNum(int[][] isConnected) {
-        if (isConnected == null || isConnected.length == 0) return 0;
+        if (isConnected.length == 0) return 0;
+        if (isConnected.length == 1) return 1;
         this.isConnected = isConnected;
         this.len = isConnected.length;
         this.isVisit = new boolean[len];
@@ -28,7 +29,6 @@ public class NumberOfProvince {
                 dfs(i);
             }
         }
-        return;
     }
 
     public static void main(String[] args) {
@@ -37,7 +37,7 @@ public class NumberOfProvince {
         System.out.println(numbers.findCircleNum(input));
     }
 }
-//547. Number of Provinces
+//547. Number of Provinces / friend cycle
 //        There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
 //
 //        A province is a group of directly or indirectly connected cities and no other cities outside of the group.
@@ -46,10 +46,7 @@ public class NumberOfProvince {
 //
 //        Return the total number of provinces.
 //
-//
-//
 //        Example 1:
-//
 //
 //        Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
 //        Output: 2
