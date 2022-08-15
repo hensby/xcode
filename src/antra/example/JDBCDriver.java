@@ -18,8 +18,8 @@ public class JDBCDriver {
 //		int sal=sc.nextInt();
 
 //        Driver driver = new com.mysql.jdbc.Driver();
-        Driver driver = new com.mysql.cj.jdbc.Driver();
-        DriverManager.registerDriver(driver);
+//        Driver driver = new com.mysql.cj.jdbc.Driver();
+//        DriverManager.registerDriver(driver);
 
         Class.forName("com.mysql.cj.jdbc.Driver");  //load static block
 

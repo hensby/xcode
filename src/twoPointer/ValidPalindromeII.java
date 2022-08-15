@@ -25,11 +25,42 @@ public class ValidPalindromeII {
         return true;
     }
 
+    public boolean validPalindrome1(String s) {
+        int length = s.length();
+        if (length == 0) return false;
+        int left = 0, right = length - 1;
+        while(left < right) {
+            if (s.charAt(left) == s.charAt(right)) {
+                left++;
+                right--;
+            } else {
+                return isPalindrome1(s.substring(left + 1, right + 1)) || isPalindrome1(s.substring(left, right));
+            }
+        }
+        return true;
+    }
+
+    public boolean isPalindrome1(String s) {
+        int left = 0, right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left) == s.charAt(right)) {
+                left++;
+                right--;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         String s = "abca";
         System.out.println(validPalindrome(s));
     }
 }
+
+// abfghhgfdba   => fghhgf or ghhgfd
+
 //680. Valid Palindrome II
 //        Given a string s, return true if the s can be palindrome after deleting at most one character from it.
 //

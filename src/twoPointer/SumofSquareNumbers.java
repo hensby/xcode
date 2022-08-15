@@ -2,13 +2,17 @@ package twoPointer;
 
 public class SumofSquareNumbers {
     public static boolean judgeSquareSum(int c) {
-        int left = 0, right = (int)Math.sqrt(c);;
+        long left = 0;
+        long right = (long) Math.sqrt(c);
         while (left <= right) {
-            int tmpSum = left * left + right * right;
-            if (tmpSum == c) return true;
-            else if (tmpSum > c) {
+            long sum = left * left + right * right;
+            if (sum == c) {
+                return true;
+            } else if (sum > c) {
                 right--;
-            } else left++;
+            } else {
+                left++;
+            }
         }
         return false;
     }
