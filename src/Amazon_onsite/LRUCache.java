@@ -85,8 +85,6 @@ public class LRUCache { // O(1) O(C)
         return;
     }
 
-
-
     public static void main(String[] args) {
         LRUCache cache = new LRUCache( 2 /* capacity */ );
 

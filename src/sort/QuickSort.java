@@ -16,8 +16,8 @@ public class QuickSort {
                 }
                 swap(arr, l, r);
             }
-            quickSort(arr, i, l - 1);
-            quickSort(arr, l + 1, j);
+            quicksort1(arr, i, l - 1);
+            quicksort1(arr, l + 1, j);
         }
     }
     public static void swap(int[] arr, int l, int r) {
@@ -63,13 +63,45 @@ public class QuickSort {
         }
     }
 
+    public static void QuickSort2(int[] arr , int left , int right) {
+        // 递归的出口必须仔细考虑清楚，否则就会陷入无穷循环从而使栈溢出
+        if (left >= right) {
+            return;
+        }
+        int pivot = arr[left];
+        int i = left;
+        int j = right;
+        while (i < j) {
+            // 这里如果pivot 选在左侧，就要先从右侧开始遍历，反之则先从左侧开始
+            while (arr[j] > pivot && i < j) {
+                j--;
+            }
+            // 找到比基准小的数换到左侧去
+            arr[i] = arr[j];
+            while (arr[i] < pivot && i < j) {
+                i++;
+            }
+            // 找到比基准大的数换到右侧去
+            arr[j] = arr[i];
+        }
+        // 最后将基准放到中间位置
+        arr[i] = pivot;
+        //  递归快排左侧数列
+        QuickSort2(arr,left,i - 1);
+        // 递归遍历右侧数列
+        QuickSort2(arr, i + 1, right);
+    }
+
     public static void main(String[] args) {
         int[] arr = {5,2,1,8,9,3,7,0,4,6};
-        quickSort(arr, 0, arr.length - 1);
+        QuickSort2(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
 
         int[] arr1 = new int[]{5, 3, 4, 1, 6, 322, 66, 2, 78};
-        quicksort1(arr1, 0, arr1.length - 1);
+        //5, 3, 4, 1, 6, x, 66, 2 , 322
+        // 5, 3, 4, 1, 6, 2, 66, x, 322
+        // 5, 3, 4, 1, 6, 2, 66, 78, 322
+        QuickSort2(arr1, 0, arr1.length - 1);
         System.out.println(Arrays.toString(arr1));
 
     }

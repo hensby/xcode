@@ -3,6 +3,8 @@ package stringAndBucket;
 import java.util.HashMap;
 import java.util.Map;
 
+//https://leetcode.cn/problems/longest-substring-without-repeating-characters/
+//3. Longest Substring Without Repeating Characters
 public class LengthOfLongestSubstring {
 
     public int lengthOfLongestSubstring(String s) {
@@ -24,7 +26,7 @@ public class LengthOfLongestSubstring {
 
     public static void main(String[] args) {
         LengthOfLongestSubstring l = new LengthOfLongestSubstring();
-        String input = "pwwkew";
+        String input = "abcabcbb";
         System.out.println(l.lengthOfLongestSubstring(input));
     }
 }
