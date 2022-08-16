@@ -1,8 +1,6 @@
 package twoPointer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class LongestWordInDictionaryThroughDeleting {
 
@@ -31,10 +29,38 @@ public class LongestWordInDictionaryThroughDeleting {
         return j == target.length();
     }
 
+    public static String findLongestWord1(String s, List<String> dictionary) {
+//        Collections.sort(dictionary, new Comparator<String>() {
+//            public int compare(String word1, String word2) {
+//                if (word1.length() != word2.length()) {
+//                    return word2.length() - word1.length();
+//                } else {
+//                    return word1.compareTo(word2);
+//                }
+//            }
+//        });
+        Collections.sort(dictionary, (a, b) -> a.length() == b.length()? b.compareTo(a): a.length() > b.length()? -1: 1);
+
+        for (String t : dictionary) {
+            int i = 0, j = 0;
+            while (i < t.length() && j < s.length()) {
+                if (t.charAt(i) == s.charAt(j)) {
+                    ++i;
+                }
+                ++j;
+            }
+            if (i == t.length()) {
+                return t;
+            }
+        }
+        return "";
+    }
+
+
     public static void main(String[] args) {
         String s = "abpcplea";
-        List<String> dictionary = new ArrayList<>(Arrays.asList("ale","apple","monkey","plea"));
-        System.out.println(findLongestWord(s, dictionary));
+        List<String> dictionary = new ArrayList<>(Arrays.asList("ale", "apple", "monkey", "pleass"));
+        System.out.println(findLongestWord1(s, dictionary));
     }
 }
 //524. Longest Word in Dictionary through Deleting
