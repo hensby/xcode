@@ -42,9 +42,27 @@ public class SortColors {
         nums[j] = t;
     }
 
+    public static void sortColors2(int[] nums) {
+        int len = nums.length;
+        if (len <= 1) return;
+        int left = 0, right = len - 1, current = 0;
+        while (current <= right) {
+            if (nums[current] == 0) {
+                swap(nums, left, current);
+                left++;
+                current++;
+            } else if (nums[current] == 2) {
+                swap(nums, current, right);
+                right--;
+            } else {
+                current++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums = new int[] {2,2,0,2,1,1,0,0,0,1,1,2};
-        sortColors(nums);
+        sortColors2(nums);
         System.out.println(Arrays.toString(nums));
     }
 }
