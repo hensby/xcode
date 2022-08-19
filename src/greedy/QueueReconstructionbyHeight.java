@@ -18,7 +18,6 @@ public class QueueReconstructionbyHeight {
                 System.out.print(Arrays.toString(i) + "   ");
             }
             System.out.println();
-
         }
         System.out.println(Arrays.asList(queue));
         return queue.toArray(new int[queue.size()][]);

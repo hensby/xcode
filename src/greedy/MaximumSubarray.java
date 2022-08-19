@@ -14,9 +14,27 @@ public class MaximumSubarray {
         return max;
     }
 
+    public static int maxSubArray1(int[] nums) {
+        int len = nums.length;
+        if (len == 1) return nums[0];
+        int maxSum = nums[0], previousMaxSum = nums[0];
+        for (int i = 1; i < len; i++) {
+            if (previousMaxSum < 0) {
+                previousMaxSum = nums[i];
+            } else {
+                previousMaxSum += nums[i];
+            }
+            maxSum = Math.max(maxSum, previousMaxSum);
+        }
+        maxSum = Math.max(maxSum, previousMaxSum);
+        return maxSum;
+    }
+
     public static void main(String[] args) {
         int[] nums = new int[]{-2,1,-3,4,-1,2,1,-5,4};
         System.out.println(maxSubArray(nums));
+        System.out.println(maxSubArray1(nums));
+
     }
 }
 //53. Maximum Subarray

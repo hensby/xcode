@@ -26,10 +26,29 @@ public class IsSubsequence {
         return true;
     }
 
+    public static boolean isSubsequence1(String s, String t) {
+        int lenS = s.length();
+        int lenT = t.length();
+        int indexS = 0, indexT = 0;
+        while (indexT < lenT) {
+            if (indexS == lenS) return true;
+            char currentS = s.charAt(indexS);
+            char currentT = t.charAt(indexT);
+            if (currentS == currentT) {
+                indexS++;
+                indexT++;
+            } else {
+                indexT++;
+            }
+        }
+        if (indexS == lenS) return true;
+        return false;
+    }
+
 
     public static void main(String[] args) {
         System.out.println(isSubsequence("axc","ahbgdc"));
-//        System.out.println(isSubsequence("abc","ahbgdc"));
+        System.out.println(isSubsequence1("abc","ahbgdc"));
     }
 }
 //392. Is Subsequence

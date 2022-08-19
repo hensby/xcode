@@ -33,7 +33,7 @@ public class SingleElementinaSortedArray {
 
         int[] nums1 = new int[]{1, 1, 2};
 
-        System.out.println(singleNonDuplicate(nums1));
+        System.out.println(singleNonDuplicate(nums));
     }
 }
 //540. Single Element in a Sorted Array
