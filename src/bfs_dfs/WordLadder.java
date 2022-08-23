@@ -98,6 +98,40 @@ public class WordLadder {
 
     }
 }
+
+//    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+//        Set<String> wordSet = new HashSet<>(wordList);
+//        if (!wordSet.contains(beginWord) || !wordSet.contains(endWord)) return 0;
+//        Queue<String> queue = new LinkedList<>();
+//        queue.add(beginWord);
+//        int level = 1;
+//        while(!queue.isEmpty()) {
+//            int size = queue.size();
+//            List<String> list=getNeighbor(s, wordSet);
+//
+//        }
+//    }
+//
+//    public list<String> getNeighber(String str, Set<String> wordSet) {
+//        List<String> result = new ArrayList<>();
+//        int len = str.length();
+//        char[] ch=str.toCharArray();
+//        for (int i = 0; i < len; i++) {
+//            char tmp = ch[i];
+//            for (char c = 'a'; c < 'z'; c++) {
+//                ch[i] = c;
+//                String neighber = new String(ch);
+//                if (wordSet.contsins(neighber)) {
+//                    result.add(neighber);
+//                    wordSet.remove(neighber);
+//                }
+//            }
+//            ch[i] = tmp;
+//        }
+//        return list;
+//    }
+
+
 // getNeighber()
 // bfs
 
