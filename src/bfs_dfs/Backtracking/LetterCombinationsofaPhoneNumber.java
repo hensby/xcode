@@ -7,6 +7,39 @@ import java.util.Map;
 
 public class LetterCombinationsofaPhoneNumber {
 
+//    List<String> res = new ArrayList<String>();
+//    Map<Character, char[]> digitMap = new HashMap<Character, char[]>() {{
+//        put('2', new char[]{'a', 'b', 'c'});
+//        put('3', new char[]{'d', 'e', 'f'});
+//        put('4', new char[]{'g', 'h', 'i'});
+//        put('5', new char[]{'j', 'k', 'l'});
+//        put('6', new char[]{'m', 'n', 'o'});
+//        put('7', new char[]{'p', 'q', 'r', 's'});
+//        put('8', new char[]{'t', 'u', 'v'});
+//        put('9', new char[]{'w', 'x', 'y', 'z'});
+//    }};
+//
+//    public List<String> letterCombinations(String digits) {
+//        if (digits == null || digits.length() == 0) return res;
+//        StringBuilder sb = new StringBuilder();
+//        dfs(digits, sb);
+//        return res;
+//    }
+//
+//    public void dfs(String digits, StringBuilder sb) {
+//        if (digits == null || digits.length() == 0) {
+//            res.add(sb.toString());
+//            return;
+//        }
+//        char flag = digits.charAt(0);
+//        for (char c : digitMap.get(flag)) {
+//            StringBuilder newSb = new StringBuilder(sb);
+//            newSb.append(c);
+//            dfs(digits.substring(1), newSb);
+//        }
+//        return;
+//    }
+
     List<String> res = new ArrayList<String>();
     Map<Character, char[]> digitMap = new HashMap<Character, char[]>() {{
         put('2', new char[]{'a', 'b', 'c'});
@@ -20,24 +53,23 @@ public class LetterCombinationsofaPhoneNumber {
     }};
 
     public List<String> letterCombinations(String digits) {
-        if (digits == null || digits.length() == 0) return res;
-        StringBuilder sb = new StringBuilder();
-        dfs(digits, sb);
+        if (digits.length() == 0) return res;
+        dfs(new StringBuilder(), digits);
         return res;
     }
 
-    public void dfs(String digits, StringBuilder sb) {
-        if (digits == null || digits.length() == 0) {
+    public void dfs (StringBuilder sb, String digits) {
+        if (digits.length() == 0 && sb.length() > 0) {
             res.add(sb.toString());
             return;
         }
-        char flag = digits.charAt(0);
-        for (char c : digitMap.get(flag)) {
-            StringBuilder newSb = new StringBuilder(sb);
-            newSb.append(c);
-            dfs(digits.substring(1), newSb);
+        char current = digits.charAt(0);
+        char[] digitsList = digitMap.get(current);
+        for (char c: digitsList) {
+            sb.append(c);
+            dfs(sb, digits.substring(1));
+            sb.deleteCharAt(sb.length() - 1);
         }
-        return;
     }
 
     public static void main(String[] args) {

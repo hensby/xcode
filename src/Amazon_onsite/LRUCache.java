@@ -113,7 +113,7 @@ public class LRUCache { // O(1) O(C)
 //
 //        Example:
 //
-//        LRUCache cache = new LRUCache( 2 /* capacity */ );
+//        OOD.LRUCache cache = new OOD.LRUCache( 2 /* capacity */ );
 //
 //        cache.put(1, 1);
 //        cache.put(2, 2);

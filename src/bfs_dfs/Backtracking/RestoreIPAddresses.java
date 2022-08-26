@@ -38,11 +38,37 @@ public class RestoreIPAddresses {
             }
         }
     }
+    List<String> res1 = new ArrayList<>();
+    public List<String> restoreIpAddresses1(String s) {
+        if (s.length() < 4) return res1;
+        dfs(s, new StringBuilder(), 0);
+        return res1;
+    }
+
+    public void dfs(String s, StringBuilder sb, int numOfIP) {
+        if (s.length() == 0 && numOfIP == 4) {
+            res1.add(sb.toString());
+            return;
+        } else if (s.length() == 0 || numOfIP == 4) return;
+        for (int i = 0; i < 3 && i < s.length(); i++) {
+            String current = s.substring(0, i + 1);
+            if (i != 0 && current.charAt(0) == '0') continue;
+            if (Integer.valueOf(current) <= 255) {
+                if (sb.length() != 0) {
+                    current = "." + current;
+                }
+                sb.append(current);
+                dfs(s.substring(i + 1), sb, numOfIP+1);
+                sb.delete(sb.length() - current.length(), sb.length());
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         String s = "25525511135";
         RestoreIPAddresses remaining = new RestoreIPAddresses();
-        System.out.println(remaining.restoreIpAddresses(s));
+        System.out.println(remaining.restoreIpAddresses1(s));
     }
 }
 //93. Restore IP Addresses

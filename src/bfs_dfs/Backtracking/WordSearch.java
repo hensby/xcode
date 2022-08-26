@@ -104,3 +104,9 @@ public class WordSearch {
         System.out.println(wordSearch.exist1(input, word));
     }
 }
+
+// isvisited[][]
+// backtracking
+// isValid()
+// revert isvisit and result during backtracking
+// index
