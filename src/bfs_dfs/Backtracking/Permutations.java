@@ -39,6 +39,8 @@ public class Permutations {
         }
     }
 
+
+
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3};
         Permutations p = new Permutations();
