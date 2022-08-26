@@ -5,37 +5,60 @@ import java.util.List;
 
 public class Subsets {
 
+//    List<List<Integer>> res = new ArrayList<>();
+//    int[] nums;
+//    int len;
+//
+//    public List<List<Integer>> subsets(int[] nums) {
+//        if (nums == null || nums.length == 0) return res;
+//        this.nums = nums;
+//        this.len = nums.length;
+//        boolean[] isVisit = new boolean[len];
+//        List<Integer> tmpRes = new ArrayList<>();
+//        for (int i = 0; i <= len; i++) {
+//            dfs(tmpRes, isVisit, 0, i);
+//        }
+//
+//        return res;
+//    }
+//
+//    public void dfs(List<Integer> tmpRes, boolean[] isVisit, int start, int size) {
+//        if (tmpRes.size() == size) {
+//            res.add(new ArrayList<>(tmpRes));
+//            return;
+//        }
+//
+//        for (int i = start; i < len; i++) {
+//            if (!isVisit[i]) {
+//                isVisit[i] = true;
+//                tmpRes.add(nums[i]);
+//                dfs(tmpRes, isVisit, i + 1, size);
+//                isVisit[i] = false;
+//                tmpRes.remove(tmpRes.size() - 1);
+//            }
+//        }
+//    }
+
     List<List<Integer>> res = new ArrayList<>();
     int[] nums;
     int len;
-
     public List<List<Integer>> subsets(int[] nums) {
-        if (nums == null || nums.length == 0) return res;
         this.nums = nums;
         this.len = nums.length;
-        boolean[] isVisit = new boolean[len];
-        List<Integer> tmpRes = new ArrayList<>();
-        for (int i = 0; i <= len; i++) {
-            dfs(tmpRes, isVisit, 0, i);
-        }
-
+        dfs(new ArrayList<>(), 0);
         return res;
     }
 
-    public void dfs(List<Integer> tmpRes, boolean[] isVisit, int start, int size) {
-        if (tmpRes.size() == size) {
+    public void dfs(List<Integer> tmpRes, int start) {
+        if (start > len) return;
+        if (tmpRes.size() <= len) {
             res.add(new ArrayList<>(tmpRes));
-            return;
         }
 
         for (int i = start; i < len; i++) {
-            if (!isVisit[i]) {
-                isVisit[i] = true;
-                tmpRes.add(nums[i]);
-                dfs(tmpRes, isVisit, i + 1, size);
-                isVisit[i] = false;
-                tmpRes.remove(tmpRes.size() - 1);
-            }
+            tmpRes.add(nums[i]);
+            dfs(tmpRes, i + 1);
+            tmpRes.remove(tmpRes.size() - 1);
         }
     }
 

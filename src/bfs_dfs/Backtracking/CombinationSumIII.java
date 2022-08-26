@@ -37,6 +37,29 @@ public class CombinationSumIII {
         }
     }
 
+//    List<List<Integer>> res = new ArrayList<>();
+//    int k, n;
+//    public List<List<Integer>> combinationSum3(int k, int n) {
+//        if (k == 0) return res;
+//        this.k = k;
+//        this.n = n;
+//        dfs(new ArrayList<>(), 0, 1);
+//        return res;
+//    }
+//
+//    public void dfs(List<Integer> tmpRes, int sum, int start) {
+//        if (tmpRes.size() == k && sum == n) {
+//            res.add(new ArrayList<>(tmpRes));
+//            return;
+//        }
+//        if (start > 9 || tmpRes.size() > k || sum > n) return;
+//        for (int i = start; i <= 9; i++) {
+//            tmpRes.add(i);
+//            dfs(tmpRes, sum + i, i + 1);
+//            tmpRes.remove(tmpRes.size() - 1);
+//        }
+//    }
+
     public static void main(String[] args) {
         CombinationSumIII C = new CombinationSumIII();
         System.out.println(C.combinationSum3(3, 9));

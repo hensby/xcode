@@ -5,34 +5,37 @@ import java.util.List;
 
 public class CombinationSum {
 
-    List<List<Integer>> res = new ArrayList<>();
-    int target, len;
     int[] candidates;
-
+    int target, len;
+    List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        if (candidates == null || candidates.length == 0) return res;
+        if (candidates.length == 0) return res;
         this.candidates = candidates;
         this.target = target;
         this.len = candidates.length;
-
-        List<Integer> tmpRes = new ArrayList<>();
-        dfs(tmpRes, 0, 0);
+        // Arrays.sort(candidates);
+        dfs(new ArrayList<>(), 0, 0);
         return res;
     }
 
-    public void dfs(List<Integer> tmpRes, int tmpSum, int start) {
-        if (tmpSum == target) {
+    public void dfs(List<Integer> tmpRes,int sum, int start) {
+        if (tmpRes.size()!= 0 && sum == target) {
             res.add(new ArrayList<>(tmpRes));
             return;
         }
+        if (sum > target) return;
         for (int i = start; i < len; i++) {
-            if (tmpSum + candidates[i] > target) continue;
-            tmpSum = tmpSum + candidates[i];
             tmpRes.add(candidates[i]);
-            dfs(tmpRes, tmpSum, i);
-            tmpSum = tmpSum - candidates[i];
+            dfs(tmpRes, sum + candidates[i], i);
             tmpRes.remove(tmpRes.size() - 1);
         }
+    }
+
+    public static void main(String[] args) {
+        CombinationSum combinationSum = new CombinationSum();
+        int[] candidates = new int[]{2,3,6,7};
+
+        System.out.println(combinationSum.combinationSum(candidates, 7));
     }
 
 }

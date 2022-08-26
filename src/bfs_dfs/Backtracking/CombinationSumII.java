@@ -7,39 +7,71 @@ import java.util.List;
 public class CombinationSumII {
 
 
+//    List<List<Integer>> res = new ArrayList<>();
+//    int[] candidates;
+//    int len, target;
+//
+//    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+//        if(candidates == null || candidates.length == 0) return res;
+//        Arrays.sort(candidates);
+//        this.candidates = candidates;
+//        this.target = target;
+//        this.len = candidates.length;
+//
+//        boolean[] isVisit = new boolean[len];
+//        List<Integer> tmpRes = new ArrayList<>();
+//        dfs(tmpRes, isVisit,0, 0);
+//        return res;
+//    }
+//
+//    public void dfs(List<Integer> tmpRes, boolean[] isVisit, int tmpSum, int start) {
+//        System.out.println(Arrays.toString(isVisit));
+//        if (tmpSum == target) {
+//            res.add(new ArrayList<>(tmpRes));
+//            return;
+//        }
+//        for (int i = start; i < len; i++) {
+//            if (tmpSum + candidates[i] > target) continue;
+//            if (i > 0 && candidates[i] == candidates[i - 1] && !isVisit[i - 1]) continue;
+//
+//            if (!isVisit[i]){
+//                isVisit[i] = true;
+//                tmpSum += candidates[i];
+//                tmpRes.add(candidates[i]);
+//                dfs(tmpRes,isVisit, tmpSum, i + 1);
+//                tmpSum -= candidates[i];
+//                tmpRes.remove(tmpRes.size() - 1);
+//                isVisit[i] = false;
+//            }
+//        }
+//    }
+
     List<List<Integer>> res = new ArrayList<>();
     int[] candidates;
-    int len, target;
-
+    int target, len;
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        if(candidates == null || candidates.length == 0) return res;
-        Arrays.sort(candidates);
+        if (candidates.length == 0) return res;
         this.candidates = candidates;
-        this.target = target;
         this.len = candidates.length;
-
+        this.target = target;
+        Arrays.sort(candidates);
         boolean[] isVisit = new boolean[len];
-        List<Integer> tmpRes = new ArrayList<>();
-        dfs(tmpRes, isVisit,0, 0);
+        dfs(new ArrayList<>(), 0, 0, isVisit);
         return res;
     }
 
-    public void dfs(List<Integer> tmpRes, boolean[] isVisit, int tmpSum, int start) {
-        System.out.println(Arrays.toString(isVisit));
-        if (tmpSum == target) {
+    public void dfs(List<Integer> tmpRes, int sum, int start, boolean[] isVisit) {
+        if (tmpRes.size() != 0 && sum == target) {
             res.add(new ArrayList<>(tmpRes));
             return;
         }
+        if (sum > target || start >= len) return;
         for (int i = start; i < len; i++) {
-            if (tmpSum + candidates[i] > target) continue;
             if (i > 0 && candidates[i] == candidates[i - 1] && !isVisit[i - 1]) continue;
-
             if (!isVisit[i]){
                 isVisit[i] = true;
-                tmpSum += candidates[i];
                 tmpRes.add(candidates[i]);
-                dfs(tmpRes,isVisit, tmpSum, i + 1);
-                tmpSum -= candidates[i];
+                dfs(tmpRes, sum + candidates[i], i + 1, isVisit);
                 tmpRes.remove(tmpRes.size() - 1);
                 isVisit[i] = false;
             }
