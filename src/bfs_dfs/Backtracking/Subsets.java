@@ -62,6 +62,34 @@ public class Subsets {
         }
     }
 
+
+//        List<List<Integer>> res = new ArrayList<>();
+//        int[] nums;
+//        int len;
+        public List<List<Integer>> subsets1(int[] nums) {
+            this.nums = nums;
+            this.len = nums.length;
+            dfs1(new ArrayList<>(), 0);
+            return res;
+        }
+
+        public void dfs1(List<Integer> tmpRes, int start) {
+            if (start > len) return;
+            if (tmpRes.size() <= len) {
+                res.add(new ArrayList<>(tmpRes));
+            }
+
+            for (int i = start; i < len; i++) {
+                tmpRes.add(nums[i]);
+                dfs1(tmpRes, i + 1);
+                tmpRes.remove(tmpRes.size() - 1);
+            }
+        }
+
+// backtrack
+// start index
+// dfs
+
     public static void main(String[] args) {
         int[] nums = new int[] {1,2,3};
         Subsets s = new Subsets();

@@ -73,11 +73,48 @@ public class ShortestPathinBinaryMatrix {
     }
 
 
+    public static int shortestPathBinaryMatrix2(int[][] grid) {
+        if (grid == null || grid.length == 0) return -1;
+        int row = grid.length;
+        int col = grid[0].length;
+        int[][] directions = new int[][]{{1, 0}, {-1, 0}, {0, -1}, {0, 1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{0, 0});
+        int level = 1;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                int[] current = queue.poll();
+                if (current[0] == row - 1 && current[1] == col - 1) {
+                    return level;
+                } else if (grid[current[0]][current[1]] == 1) {
+                    continue;
+                } else {
+                    for (int[] direction : directions) {
+                        int currentRow = current[0] + direction[0];
+                        int currentCol = current[1] + direction[1];
+                        if (currentRow >= 0 && currentRow < row && currentCol >= 0 && currentCol < col && grid[currentRow][currentCol] == 0) {
+                            queue.add(new int[]{currentRow, currentCol});
+                        }
+                    }
+                }
+            }
+            level++;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
-        ShortestPathinBinaryMatrix shortestPathinBinaryMatrix = new ShortestPathinBinaryMatrix();
         int[][] grid = new int[][]{
-                {0, 0, 0}, {1, 1, 0}, {1, 1, 0}
+                {1, 0, 0}, {1, 1, 0}, {1, 1, 0}
         };
-        System.out.println(shortestPathinBinaryMatrix.shortestPathBinaryMatrix1(grid));
+        int[][] grid1 = new int[][]{
+                {0, 1}, {1, 0}
+        };
+        System.out.println(shortestPathBinaryMatrix2(grid));
     }
 }
+
+//{0,0,0},
+//{1,1,0},
+//{1,1,0}

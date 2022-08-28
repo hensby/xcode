@@ -1,8 +1,6 @@
 package sort;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class SortCharactersByFrequency {
     public String frequencySort(String s) {
@@ -45,10 +43,39 @@ public class SortCharactersByFrequency {
         return sb.toString();
     }
 
+
+    public String frequencySort2(String s) {
+        int length = s.length();
+        if (length <= 1) return s;
+        Map<Character, Integer> frequentMap = new HashMap<>();
+        for (int i = 0; i < length; i++) {
+            frequentMap.put(s.charAt(i), frequentMap.getOrDefault(s.charAt(i), 0) + 1);
+        }
+        List<Character>[] bucket = new ArrayList[length + 1];
+        for (int i = 0; i < length + 1; i++) {
+            bucket[i] = new ArrayList<>();
+        }
+        for (char j: frequentMap.keySet()) {
+            bucket[frequentMap.get(j)].add(j);
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int k = length; k > 0; k--) {
+            for (char current: bucket[k]) {
+                int index = 0;
+                while (index < frequentMap.get(current)) {
+                    sb.append(current);
+                    index++;
+                }
+            }
+        }
+        return sb.toString();
+    }
     public static void main(String[] args) {
         SortCharactersByFrequency sortCharactersByFrequency = new SortCharactersByFrequency();
         System.out.println(sortCharactersByFrequency.frequencySort("aaacccsffffff"));
         System.out.println(sortCharactersByFrequency.frequencySort1("aaacccsffffff"));
+        System.out.println(sortCharactersByFrequency.frequencySort2("aaacccsffffff"));
+
 
 //        Map<Character, Character> map = new HashMap<Character, Character>(){{
 //            put('(', ')');

@@ -88,6 +88,6 @@ public class DiffWaysToCompute {
 
     public static void main(String[] args) {
         String input = "2*3-4*5";
-        System.out.println(new DiffWaysToCompute().diffWaysToCompute1(input));
+        System.out.println(new DiffWaysToCompute().diffWaysToCompute(input));
     }
 }
