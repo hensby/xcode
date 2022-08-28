@@ -39,11 +39,41 @@ public class SubsetsII {
             }
         }
     }
+//    int[] nums;
+//    int len;
+//    List<List<Integer>> res = new ArrayList<>();
+    public List<List<Integer>> subsetsWithDup1(int[] nums) {
+        if (nums.length == 0) {
+            res.add(new ArrayList<>());
+            return res;
+        }
+        Arrays.sort(nums);
+        this.nums = nums;
+        this.len = nums.length;
+        boolean[] isVisit = new boolean[len];
+        dfs1(new ArrayList<>(), isVisit, 0);
+        return res;
+    }
+
+    public void dfs1(List<Integer> tmpRes, boolean[] isVisit, int start) {
+        if (start > len) return;
+        res.add(new ArrayList<>(tmpRes));
+        for (int i = start; i < len; i++) {
+            if (i > start && nums[i] == nums[i - 1] && !isVisit[i - 1]) continue;
+            if (!isVisit[i]) {
+                isVisit[i] = true;
+                tmpRes.add(nums[i]);
+                dfs1(tmpRes, isVisit, i + 1);
+                tmpRes.remove(tmpRes.size() - 1);
+                isVisit[i] = false;
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        int[] nums = new int[] {1,2,2};
+        int[] nums = new int[] {1,2,3};
         SubsetsII subsetsII = new SubsetsII();
-        System.out.println(subsetsII.subsetsWithDup(nums));
+        System.out.println(subsetsII.subsetsWithDup1(nums));
     }
 }
 //90. Subsets II

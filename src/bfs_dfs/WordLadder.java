@@ -4,52 +4,11 @@ import java.util.*;
 //127
 
 public class WordLadder {
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Set<String> wordSet = new HashSet<>(wordList);
-        if (!wordSet.contains(endWord) || wordSet.contains(beginWord)) return 0;
-        Queue<String> wordQueue = new LinkedList<>();
-        wordQueue.offer(beginWord);
-        int res = 0;
-
-        while (!wordQueue.isEmpty()) {
-            int len=wordQueue.size();
-            res++;
-            while(len-->0){
-                String s=wordQueue.poll();
-                List<String> list=getNeighbor(s, wordSet);
-                for(String string:list){
-                    if(string.equals(endWord)) return 1+res;
-                    wordQueue.offer(string);
-                }
-            }
-        }
-        return 0;
-    }
-    public List<String> getNeighbor(String s, Set<String> set){
-        List<String> list=new ArrayList<>();
-        char[] ch=s.toCharArray();
-        for(int i=0;i<ch.length;i++){
-            char tmp=ch[i];
-            for(char c='a';c<='z';c++){
-                if(c!=tmp){
-                    ch[i]=c;
-                    String s1=new String(ch);
-                    if(set.contains(s1)){
-                        list.add(s1);
-                        set.remove(s1);
-                    }
-                }
-            }
-            ch[i]=tmp;
-        }
-        System.out.println(list);
-        return list;
-    }
 
 
     Set<String> wordSet;
 
-    public int ladderLength1(String beginWord, String endWord, List<String> wordList) {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         wordSet = new HashSet(wordList);
 
         Queue<String> queue = new LinkedList<>();
@@ -60,7 +19,7 @@ public class WordLadder {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 String tmpWord = queue.poll();
-                List<String> tmpNeighbers = getNeighber1(tmpWord);
+                List<String> tmpNeighbers = getNeighber(tmpWord);
                 for (String neighber: tmpNeighbers) {
                     if (neighber.equals(endWord)) return 1 + res;
                     queue.add(neighber);
@@ -70,7 +29,7 @@ public class WordLadder {
         return 0;
     }
 
-    public List<String> getNeighber1(String word) {
+    public List<String> getNeighber(String word) {
         char[] wordCharArray = word.toCharArray();
         List<String> res = new ArrayList<>();
         for (int i = 0; i < wordCharArray.length; i++) {
@@ -94,42 +53,11 @@ public class WordLadder {
         List<String> wordList = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog", "hmt");
         WordLadder wordLadder = new WordLadder();
         System.out.println(wordLadder.ladderLength(beginWord,endWord,wordList));
-        System.out.println(wordLadder.ladderLength1(beginWord,endWord,wordList));
 
     }
 }
 
-//    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-//        Set<String> wordSet = new HashSet<>(wordList);
-//        if (!wordSet.contains(beginWord) || !wordSet.contains(endWord)) return 0;
-//        Queue<String> queue = new LinkedList<>();
-//        queue.add(beginWord);
-//        int level = 1;
-//        while(!queue.isEmpty()) {
-//            int size = queue.size();
-//            List<String> list=getNeighbor(s, wordSet);
-//
-//        }
-//    }
-//
-//    public list<String> getNeighber(String str, Set<String> wordSet) {
-//        List<String> result = new ArrayList<>();
-//        int len = str.length();
-//        char[] ch=str.toCharArray();
-//        for (int i = 0; i < len; i++) {
-//            char tmp = ch[i];
-//            for (char c = 'a'; c < 'z'; c++) {
-//                ch[i] = c;
-//                String neighber = new String(ch);
-//                if (wordSet.contsins(neighber)) {
-//                    result.add(neighber);
-//                    wordSet.remove(neighber);
-//                }
-//            }
-//            ch[i] = tmp;
-//        }
-//        return list;
-//    }
+
 
 
 // getNeighber()

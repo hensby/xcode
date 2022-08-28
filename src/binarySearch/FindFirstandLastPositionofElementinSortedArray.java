@@ -38,10 +38,37 @@ public class FindFirstandLastPositionofElementinSortedArray {
         return res;
     }
 
+    public static int[] searchRange1(int[] nums, int target) {
+        int len = nums.length;
+        int left = 0, right = len - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] >= target) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        int leftEdge = nums[left] == target? left: -1;
+        if (leftEdge == -1) return new int[]{-1, -1};
+        left = 0;
+        right = len - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] <= target) {
+                left = mid;
+            } else {
+                right = mid - 1;
+            }
+        }
+        int rightEdge = nums[right] == target? right: -1;
+        return new int[] {leftEdge, rightEdge};
+    }
+
     public static void main(String[] args) {
         int[] nums =new int[]{5,7,7,8,8,10};
         int target = 8;
-        System.out.println(Arrays.toString(searchRange(nums, target)));
+        System.out.println(Arrays.toString(searchRange1(nums, target)));
     }
 
 }
