@@ -1,5 +1,7 @@
 package DP;
 
+import java.util.Arrays;
+
 public class WiggleSubsequence {
     public int wiggleMaxLength(int[] nums) {
         int n = nums.length;
@@ -21,6 +23,8 @@ public class WiggleSubsequence {
                 down[i] = down[i - 1];
             }
         }
+        System.out.println(Arrays.toString(up));
+        System.out.println(Arrays.toString(down));
         return Math.max(up[n - 1], down[n - 1]);
     }
 
