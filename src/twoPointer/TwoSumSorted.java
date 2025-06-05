@@ -19,9 +19,27 @@ public class TwoSumSorted {
         return new int[2];
     }
 
+    public static int[] twoSum1(int[] numbers, int target) {
+        if (target < numbers[0] || target > numbers[numbers.length - 1]) {
+            return new int[] {0,0};
+        }
+        int i = 1, j = numbers.length;
+        while (i < j) {
+            int tempSum = numbers[i - 1] + numbers[j - 1];
+            if (tempSum == target) {
+                return new int[] {i, j};
+            } else if (tempSum > target) {
+                j--;
+            } else {
+                i++;
+            }
+        }
+        return new int[] {0,0};
+    }
+
     public static void main(String[] args) {
         int[] input = new int[] {1,2,3,4,5,6,7,8,9,10};
-        System.out.println(Arrays.toString(twoSum(input, 17)));
+        System.out.println(Arrays.toString(twoSum1(input, 17)));
     }
 }
 //167. Two Sum II - Input array is sorted

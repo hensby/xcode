@@ -92,6 +92,7 @@ public class QuickSort {
         QuickSort2(arr, i + 1, right);
     }
 
+
     public static void main(String[] args) {
         int[] arr = {5,2,1,8,9,3,7,0,4,6};
         QuickSort2(arr, 0, arr.length - 1);
@@ -103,6 +104,5 @@ public class QuickSort {
         // 5, 3, 4, 1, 6, 2, 66, 78, 322
         QuickSort2(arr1, 0, arr1.length - 1);
         System.out.println(Arrays.toString(arr1));
-
     }
 }

@@ -1,5 +1,7 @@
 package sort;
 
+import java.util.PriorityQueue;
+
 public class KthLargestElementInArray {
 
     public int findKthLargest(int[] nums, int k) {
@@ -38,10 +40,27 @@ public class KthLargestElementInArray {
         a[j] = t;
     }
 
+    public int findKthLargest1(int[] nums, int k) {
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        int size = 0;
+        for (int i = 0; i < nums.length; i++) {
+            queue.add(nums[i]);
+            size++;
+            if (size > k) {
+                queue.poll();
+                size--;
+            }
+        }
+        return queue.peek();
+    }
+
+
     public static void main(String[] args) {
         KthLargestElementInArray findK = new KthLargestElementInArray();
         int[] arr1 = new int[]{3,2,3,1,2,4,5,5,6};
 
         System.out.println(findK.findKthLargest(arr1, 4));
+        System.out.println(findK.findKthLargest1(arr1, 4));
+
     }
 }
