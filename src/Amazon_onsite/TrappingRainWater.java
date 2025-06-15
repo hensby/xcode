@@ -25,8 +25,59 @@ public class TrappingRainWater {
         return res;
     }
 
-    public static void main(String[] args) {
+    public int trap1(int[] height) {
+        if (height == null || height.length < 3) return 0;
+        int len = height.length, res = 0;
+        int[] leftMaxArray = new int[len], rightMaxArray = new int[len];
+        int leftMax = 0, rightMax = 0;
+        for (int i = 0; i < len - 2; i++) {
+            if (height[i] > leftMax) {
+                leftMax = height[i];
+            }
+            leftMaxArray[i + 1] = leftMax;
+        }
+        for (int i = len - 1; i > 1; i--) {
+            if (height[i] > rightMax) {
+                rightMax = height[i];
+            }
+            rightMaxArray[i - 1] = rightMax;
+        }
+        for (int i = 0; i < len - 1; i++) {
+            int bar = Math.min(leftMaxArray[i], rightMaxArray[i]);
+            if (bar > height[i]) {
+                res += bar - height[i];
+            }
+        }
+        return res;
+    }
 
+    public int trap2(int[] height) {
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+
+        int l = 0, r = height.length - 1;
+        int leftMax = height[l], rightMax = height[r];
+        int res = 0;
+        while (l < r) {
+            if (leftMax < rightMax) {
+                l++;
+                leftMax = Math.max(leftMax, height[l]);
+                res += leftMax - height[l];
+            } else {
+                r--;
+                rightMax = Math.max(rightMax, height[r]);
+                res += rightMax - height[r];
+            }
+        }
+        return res;
+    }
+
+
+    public static void main(String[] args) {
+        int[] height = new int[] {0,2,0,3,1,0,1,3,2,1};
+        TrappingRainWater t = new TrappingRainWater();
+        System.out.println(t.trap2(height));
     }
 }
 //42. Trapping Rain Water

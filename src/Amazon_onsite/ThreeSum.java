@@ -33,11 +33,45 @@ public class ThreeSum {
         return res;
     }
 
+    public static List<List<Integer>> threeSum1(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (nums == null || nums.length < 3) return result;
+
+        Arrays.sort(nums);
+        // O(NlogN)
+        int len = nums.length, index = 0;
+        // len = 3, index < 1
+        while (index < len - 2) {
+            if (index > 0 && nums[index] == nums[index - 1]) {
+                index++;
+                continue;
+            };
+            int temp1 = nums[index];
+            int left = index + 1, right = len - 1;
+            while (left < right) {
+                int tempSum = temp1 + nums[left] + nums[right];
+                if (tempSum == 0) {
+                    result.add(Arrays.asList(nums[index], nums[left], nums[right]));
+                    while (left < right && nums[left] == nums[left + 1]) left++;
+                    left++;
+                    while (left < right && nums[right] == nums[right - 1]) right--;
+                    right--;
+                } else if (tempSum < 0) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+            index++;
+
+        }
+        return result;
+    }
 
 
     public static void main(String[] args) {
         int[] nums = new int[]{-1,0,1,2,-1,-4};
-        System.out.println(threeSum(nums));
+        System.out.println(threeSum1(nums));
 
     }
 }
